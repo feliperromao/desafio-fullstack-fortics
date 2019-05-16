@@ -17,4 +17,4 @@ Route::resource('refrigerantes', 'RefrigeranteController');
 Route::resource('tipos', 'TipoController');
 Route::resource('litragens', 'LitragemController');
 Route::resource('marcas', 'MarcaController');
-Route::resource('sabor', 'SaborController');
+Route::resource('sabores', 'SaborController');

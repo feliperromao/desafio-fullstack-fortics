@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Litragem;
 
 class LitragemController extends Controller
 {
@@ -13,7 +14,8 @@ class LitragemController extends Controller
      */
     public function index()
     {
-        //
+        $litragens = Litragem::all();
+        return response($litragens);
     }
 
     /**
