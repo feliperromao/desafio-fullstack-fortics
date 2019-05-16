@@ -14,7 +14,7 @@ class RefrigeranteController extends Controller
      */
     public function index()
     {
-        $refrigerantes = Refrigerante::with('sabor', 'tipo', 'litragem')->get();
+        $refrigerantes = Refrigerante::with('sabor', 'tipo', 'litragem')->paginate(10);
 
         return response($refrigerantes);
     }
