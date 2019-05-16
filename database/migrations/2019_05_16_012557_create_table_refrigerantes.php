@@ -26,6 +26,8 @@ class CreateTableRefrigerantes extends Migration
             $table->foreign('tipo_id')->references('id')->on('tipos');
             $table->foreign('sabor_id')->references('id')->on('sabores');
             $table->foreign('litragem_id')->references('id')->on('litragens');
+
+            $table->unique(['marca', 'litragem_id'], 'unique_marca');
         });
     }
 
