@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::resource('refrigerantes', 'RefrigeranteController');
+Route::resource('tipos', 'TipoController');
+Route::resource('litragens', 'LitragemController');
+Route::resource('marcas', 'MarcaController');
+Route::resource('sabor', 'SaborController');
