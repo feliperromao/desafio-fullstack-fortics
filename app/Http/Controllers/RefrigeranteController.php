@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Refrigerante;
 
 class RefrigeranteController extends Controller
 {
@@ -13,7 +14,9 @@ class RefrigeranteController extends Controller
      */
     public function index()
     {
-        //
+        $refrigerantes = Refrigerante::with('sabor', 'tipo', 'litragem')->get();
+
+        return response($refrigerantes);
     }
 
     /**

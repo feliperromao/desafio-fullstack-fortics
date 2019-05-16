@@ -16,5 +16,4 @@ use Illuminate\Http\Request;
 Route::resource('refrigerantes', 'RefrigeranteController');
 Route::resource('tipos', 'TipoController');
 Route::resource('litragens', 'LitragemController');
-Route::resource('marcas', 'MarcaController');
 Route::resource('sabores', 'SaborController');

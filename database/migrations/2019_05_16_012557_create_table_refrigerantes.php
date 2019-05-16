@@ -17,13 +17,12 @@ class CreateTableRefrigerantes extends Migration
             $table->bigIncrements('id');
             $table->float('valor');
             $table->integer('quantidade');
-            $table->unsignedBigInteger('marca_id');
+            $table->string('marca', 30);
             $table->unsignedBigInteger('tipo_id');
             $table->unsignedBigInteger('sabor_id');
             $table->unsignedBigInteger('litragem_id');
             $table->timestamps();
 
-            $table->foreign('marca_id')->references('id')->on('marcas');
             $table->foreign('tipo_id')->references('id')->on('tipos');
             $table->foreign('sabor_id')->references('id')->on('sabores');
             $table->foreign('litragem_id')->references('id')->on('litragens');
