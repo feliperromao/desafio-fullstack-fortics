@@ -1,16 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Main from './main/Routes'
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes React and other helpers. It's a great starting point while
- * building robust, powerful web applications using React + Laravel.
- */
-
+import { applyMiddleware, createStore } from 'redux'
+import { Provider } from 'react-redux'
+import promise from 'redux-promise'
+import multi from 'redux-multi'
+import thunk from 'redux-thunk'
+import Routes from './main/Routes'
+import reducers from './main/rootReducer'
 require('./bootstrap');
 
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const store = applyMiddleware(multi, thunk, promise)(createStore)(reducers, devTools)
+
 ReactDOM.render(
-    <Main />,
+    <Provider store={store}>
+        <Routes />
+    </Provider>,
     document.getElementById('wrapper')
 )

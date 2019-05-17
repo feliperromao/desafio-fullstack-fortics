@@ -1,11 +1,11 @@
 import React from 'react'
-// import Topbar from '../nav/Topbar'
+import Topbar from '../nav/Topbar'
 import Footer from '../commons/Footer'
 
 export default props => (
   <React.Fragment>
     <div id="content">
-      {/* <Topbar /> */}
+      <Topbar />
       <div className="container-fluid">
         {props.children}
       </div>
