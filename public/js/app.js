@@ -72872,6 +72872,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_commons_Page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/commons/Page */ "./resources/js/components/commons/Page.jsx");
+/* harmony import */ var _components_card_Card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/card/Card */ "./resources/js/components/card/Card.jsx");
+/* harmony import */ var _components_card_CardHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/card/CardHeader */ "./resources/js/components/card/CardHeader.jsx");
+/* harmony import */ var _components_card_CardBody__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/card/CardBody */ "./resources/js/components/card/CardBody.jsx");
+/* harmony import */ var _components_table_Table__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/table/Table */ "./resources/js/components/table/Table.jsx");
+/* harmony import */ var _components_table_Thead__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/table/Thead */ "./resources/js/components/table/Thead.jsx");
+/* harmony import */ var _components_table_Tbody__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/table/Tbody */ "./resources/js/components/table/Tbody.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -72893,6 +72899,12 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
+
+
+
+
 var Refrigerantes =
 /*#__PURE__*/
 function (_React$Component) {
@@ -72907,11 +72919,13 @@ function (_React$Component) {
   _createClass(Refrigerantes, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_commons_Page__WEBPACK_IMPORTED_MODULE_1__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Sobre este projeto"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Tecnologias Utilizadas"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        className: "table table-striped"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", {
-        className: "thead-dark"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Tecnologia"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Objetivo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Observa\xE7\xE3o"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "PHP 7x"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Linguagem back-end"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Utilizado como linguagem do lado do servidor nessa aplica\xE7\xE3o")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Laravel 5.8"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Framework PHP"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Framework utlizado para alavancar o processo de desenvolvinento")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "MySQL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Persistir os dados da aplica\xE7\xE3o"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Todas as tabelas foram geradas a partir das migrations com o Artisan")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "React JS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\x7FConstru\xE7\xE3o do front-end"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Framework front-end utilizado para construir a aplica\xE7\xE3o de forma r\xE1pida e escal\xE1vel")))));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_commons_Page__WEBPACK_IMPORTED_MODULE_1__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_card_Card__WEBPACK_IMPORTED_MODULE_2__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_card_CardHeader__WEBPACK_IMPORTED_MODULE_3__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "h5 m-0 font-weight-bold text-primary"
+      }, "Tecnologias Utilizadas")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_card_CardBody__WEBPACK_IMPORTED_MODULE_4__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Table__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        style: "table table-striped"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Thead__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        color: "thead-light"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Tecnologia"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Objetivo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Observa\xE7\xE3o"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Tbody__WEBPACK_IMPORTED_MODULE_7__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "PHP 7x"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Linguagem back-end"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Utilizado como linguagem do lado do servidor nessa aplica\xE7\xE3o")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Laravel 5.8"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Framework PHP"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Framework utlizado para alavancar o processo de desenvolvinento")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "MySQL"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Persistir os dados da aplica\xE7\xE3o"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Todas as tabelas foram geradas a partir das migrations com o Artisan")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "React JS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\x7FConstru\xE7\xE3o do front-end"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Framework front-end utilizado para construir a aplica\xE7\xE3o de forma r\xE1pida e escal\xE1vel")))))));
     }
   }]);
 
@@ -72940,8 +72954,8 @@ function (_React$Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! c:\Users\felipe\Desktop\desario_fullstack_fortics\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! c:\Users\felipe\Desktop\desario_fullstack_fortics\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\desafio-fullstack-fortics\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\desafio-fullstack-fortics\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
