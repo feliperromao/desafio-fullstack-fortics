@@ -12,9 +12,9 @@ try {
 
     require('@fortawesome/fontawesome-free/css/all.min.css')
     require('bootstrap/dist/css/bootstrap.min.css');
-    require('../css/app.css')
     require('bootstrap/dist/js/bootstrap.bundle')
     require('jquery.easing')
+    require('../css/app.css')
 } catch (e) {}
 
 /**

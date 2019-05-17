@@ -6,8 +6,24 @@ import Card from '../../components/card/Card'
 import CardHeader from '../../components/card/CardHeader'
 import CardBody from '../../components/card/CardBody'
 import Button from '../../components/button/Button'
+import Table from '../../components/table/Table'
+import Thead from '../../components/table/Thead'
+import Tbody from '../../components/table/Tbody'
 
 class Refrigerantes extends React.Component {
+
+  constructor(props){
+    super(props)
+
+    this.state = {
+      thead: ['Selecionar', 'Marca', 'Sabor', 'Litragem', 'Tipo', 'Quantidade', 'Preço', 'Editar/Excluir']
+    }
+  }
+
+  renderItens(){
+
+  }
+
   render() {
     return (
       <Page>
@@ -15,7 +31,7 @@ class Refrigerantes extends React.Component {
           <Grid sm="12" md="12" lg="12">
             <Card>
               <CardHeader>
-                <span className="h6 m-0 font-weight-bold text-primary">Meus Refrigerantes</span>
+                <span className="h5 m-0 font-weight-bold text-primary">Meus Refrigerantes</span>
                 <Button
                   title="Adicionar"
                   type="success"
@@ -24,15 +40,10 @@ class Refrigerantes extends React.Component {
                 />
               </CardHeader>
               <CardBody>
-                <table className="table table-striped">
-                  <thead className="thead-dark">
-                    <tr>
-                      <th>Tecnologia</th>
-                      <th>Objetivo</th>
-                      <th>Observação</th>
-                    </tr>
-                  </thead>
-                </table>
+                <Table style="table-responsive-lg">
+                  <Thead itens={this.state.thead} color="thead-light" align="center" />
+                  <Tbody>{this.renderItens()}</Tbody>
+                </Table>
               </CardBody>
             </Card>
           </Grid>
