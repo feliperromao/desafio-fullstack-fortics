@@ -16,8 +16,8 @@ class Thead extends React.Component{
   }
   renderItens(){
     const itens = this.state.itens || []
-    return itens.map( i => (
-      <th>{i}</th>
+    return itens.map( (i, index) => (
+      <th key={index}>{i}</th>
     ))
   }
   render(){

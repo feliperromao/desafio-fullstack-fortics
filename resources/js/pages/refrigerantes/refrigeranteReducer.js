@@ -68,6 +68,12 @@ export default (state = INITIAL_VALUE, action) => {
         }
       }
 
+    case 'LISTAR_REFRIGERANTES':
+      return {
+        ...state,
+        list: action.payload
+      }
+
     default:
       return state
   }

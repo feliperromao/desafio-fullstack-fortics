@@ -38,7 +38,10 @@ class Refrigerantes extends React.Component {
     const itens = this.props.list || []
     return itens.map( item => (
       <tr key={item.id}>
-        <td></td>
+        <td>
+          <input type="checkbox"/>
+        </td>
+        <td>{item.marca}</td>
       </tr>
     ))
   }

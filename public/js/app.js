@@ -72475,8 +72475,10 @@ function (_React$Component) {
     key: "renderItens",
     value: function renderItens() {
       var itens = this.state.itens || [];
-      return itens.map(function (i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, i);
+      return itens.map(function (i, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+          key: index
+        }, i);
       });
     }
   }, {
@@ -72795,7 +72797,9 @@ function (_React$Component) {
       return itens.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
           key: item.id
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "checkbox"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, item.marca));
       });
     }
   }, {
@@ -72847,6 +72851,12 @@ __webpack_require__.r(__webpack_exports__);
 var listar = function listar() {
   return function (dispatch, getState) {
     var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])('api/refrigerantes');
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (resp) {
+      return dispatch({
+        type: 'LISTAR_REFRIGERANTES',
+        payload: resp.data ? resp.data.data : []
+      });
+    });
   };
 };
 
@@ -72922,6 +72932,11 @@ var INITIAL_VALUE = {
         data: _objectSpread({}, state.data, {
           litragem_id: action.payload
         })
+      });
+
+    case 'LISTAR_REFRIGERANTES':
+      return _objectSpread({}, state, {
+        list: action.payload
       });
 
     default:
