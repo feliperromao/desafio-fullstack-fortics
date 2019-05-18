@@ -72164,6 +72164,45 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/form/Select.jsx":
+/*!*************************************************!*\
+  !*** ./resources/js/components/form/Select.jsx ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/**
+ * PROPS
+ * data => Os dados a serem renderizados
+ * index => nome do campo que será responsavel por identificar cada registro
+ * title => nome do campo que será apresentado dentro dos options
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = (function (props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    value: props.value,
+    style: props.style,
+    name: props.name,
+    id: props.id,
+    className: props["class"] ? props["class"] : 'custom-select',
+    onChange: props.onChange
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: ""
+  }, "- Selecione -"), props.data ? props.data.map(function (item) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      key: item[props.index],
+      value: item[props.index]
+    }, item[props.title]);
+  }) : null);
+});
+
+/***/ }),
+
 /***/ "./resources/js/components/layout/Grid.jsx":
 /*!*************************************************!*\
   !*** ./resources/js/components/layout/Grid.jsx ***!
@@ -72244,6 +72283,101 @@ __webpack_require__.r(__webpack_exports__);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, props.children);
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/modal/Modal.jsx":
+/*!*************************************************!*\
+  !*** ./resources/js/components/modal/Modal.jsx ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal fade",
+    id: props.id,
+    tabIndex: "-1",
+    role: "dialog"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-dialog ".concat(props.size),
+    role: "document"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-content"
+  }, props.children)));
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/modal/ModalBody.jsx":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/modal/ModalBody.jsx ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-body"
+  }, props.children);
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/modal/ModalFooter.jsx":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/modal/ModalFooter.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-footer"
+  }, props.children);
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/modal/ModalHeader.jsx":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/modal/ModalHeader.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header"
+  }, props.children, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "close",
+    "data-dismiss": "modal",
+    "aria-label": "Close"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    "aria-hidden": "true"
+  }, "\xD7")));
 });
 
 /***/ }),
@@ -72922,6 +73056,292 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./resources/js/pages/refrigerantes/FormCadastro.jsx":
+/*!***********************************************************!*\
+  !*** ./resources/js/pages/refrigerantes/FormCadastro.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _components_form_Select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/form/Select */ "./resources/js/components/form/Select.jsx");
+/* harmony import */ var _components_form_Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/form/Label */ "./resources/js/components/form/Label.jsx");
+/* harmony import */ var _components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/layout/Grid */ "./resources/js/components/layout/Grid.jsx");
+/* harmony import */ var _components_layout_Row__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/layout/Row */ "./resources/js/components/layout/Row.jsx");
+/* harmony import */ var _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./refrigeranteActions */ "./resources/js/pages/refrigerantes/refrigeranteActions.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    valor: state.refrigerante.data.valor,
+    quantidade: state.refrigerante.data.quantidade,
+    marca: state.refrigerante.data.marca,
+    tipo_id: state.refrigerante.data.tipo_id,
+    sabor_id: state.refrigerante.data.sabor_id,
+    litragem_id: state.refrigerante.data.litragem_id,
+    litragens: state.refrigerante.litragens,
+    sabores: state.refrigerante.sabores,
+    tipos: state.refrigerante.tipos
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({
+    listarLitragens: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["listarLitragens"],
+    listarSabores: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["listarSabores"],
+    listarTipos: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["listarTipos"]
+  }, dispatch);
+};
+
+var FormCadastro =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(FormCadastro, _React$Component);
+
+  function FormCadastro() {
+    _classCallCheck(this, FormCadastro);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(FormCadastro).apply(this, arguments));
+  }
+
+  _createClass(FormCadastro, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      this.props.listarLitragens();
+      this.props.listarSabores();
+      this.props.listarTipos();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Row__WEBPACK_IMPORTED_MODULE_6__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        sm: "12",
+        md: "6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Label__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        to: "marca",
+        title: "Marca: ",
+        required: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: this.props.marca,
+        onChange: function onChange() {},
+        placeholder: "Ex: Cola Cola",
+        id: "marca",
+        className: "form-control",
+        type: "text"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        sm: "12",
+        md: "6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Label__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        to: "sabor",
+        title: "Sabor: ",
+        required: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Select__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        data: this.props.sabores,
+        value: this.props.sabor_id,
+        onChange: function onChange() {},
+        id: "sabor",
+        index: "id",
+        title: "descricao"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Row__WEBPACK_IMPORTED_MODULE_6__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        sm: "12",
+        md: "6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Label__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        to: "litragem",
+        title: "Litragem: ",
+        required: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Select__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        data: this.props.litragens,
+        value: this.props.litragem_id,
+        onChange: function onChange() {},
+        id: "litragem",
+        index: "id",
+        title: "descricao"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        sm: "12",
+        md: "6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Label__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        to: "tipo",
+        title: "Tipo: ",
+        required: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Select__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        data: this.props.tipos,
+        value: this.props.tipo_id,
+        onChange: function onChange() {},
+        id: "tipo",
+        index: "id",
+        title: "descricao"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Row__WEBPACK_IMPORTED_MODULE_6__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        sm: "12",
+        md: "6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Label__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        to: "quantidade",
+        title: "Quantidade: ",
+        required: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: this.props.quantidade,
+        onChange: function onChange() {},
+        valor: "quantidade",
+        min: 0,
+        className: "form-control",
+        type: "number"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        sm: "12",
+        md: "6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Label__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        to: "valor",
+        title: "Valor (R$): ",
+        required: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: this.props.valor,
+        onChange: function onChange() {},
+        id: "valor",
+        min: 0,
+        step: "0.01",
+        className: "form-control",
+        type: "number"
+      })))));
+    }
+  }]);
+
+  return FormCadastro;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(FormCadastro));
+
+/***/ }),
+
+/***/ "./resources/js/pages/refrigerantes/ModalCadastro.jsx":
+/*!************************************************************!*\
+  !*** ./resources/js/pages/refrigerantes/ModalCadastro.jsx ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _components_modal_Modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/modal/Modal */ "./resources/js/components/modal/Modal.jsx");
+/* harmony import */ var _components_modal_ModalHeader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/modal/ModalHeader */ "./resources/js/components/modal/ModalHeader.jsx");
+/* harmony import */ var _components_modal_ModalBody__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/modal/ModalBody */ "./resources/js/components/modal/ModalBody.jsx");
+/* harmony import */ var _components_modal_ModalFooter__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/modal/ModalFooter */ "./resources/js/components/modal/ModalFooter.jsx");
+/* harmony import */ var _components_button_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/button/Button */ "./resources/js/components/button/Button.jsx");
+/* harmony import */ var _FormCadastro__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./FormCadastro */ "./resources/js/pages/refrigerantes/FormCadastro.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {};
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({}, dispatch);
+};
+
+var ModalCadastro =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ModalCadastro, _React$Component);
+
+  function ModalCadastro() {
+    _classCallCheck(this, ModalCadastro);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ModalCadastro).apply(this, arguments));
+  }
+
+  _createClass(ModalCadastro, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_modal_Modal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        id: "md_cadastro_refrigerantes"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_modal_ModalHeader__WEBPACK_IMPORTED_MODULE_4__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Cadastro de Refrigerantes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_modal_ModalBody__WEBPACK_IMPORTED_MODULE_5__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormCadastro__WEBPACK_IMPORTED_MODULE_8__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_modal_ModalFooter__WEBPACK_IMPORTED_MODULE_6__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_button_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        type: "secondary",
+        title: "Cancelar",
+        dismiss: "modal"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_button_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        type: "primary",
+        title: "Salvar",
+        icon: "fa fa-fw fa-save"
+      })));
+    }
+  }]);
+
+  return ModalCadastro;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(ModalCadastro));
+
+/***/ }),
+
 /***/ "./resources/js/pages/refrigerantes/Refrigerantes.jsx":
 /*!************************************************************!*\
   !*** ./resources/js/pages/refrigerantes/Refrigerantes.jsx ***!
@@ -72948,7 +73368,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_table_Thead__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/table/Thead */ "./resources/js/components/table/Thead.jsx");
 /* harmony import */ var _components_table_Tbody__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/table/Tbody */ "./resources/js/components/table/Tbody.jsx");
 /* harmony import */ var _components_form_Label__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/form/Label */ "./resources/js/components/form/Label.jsx");
-/* harmony import */ var _refrigeranteActions__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./refrigeranteActions */ "./resources/js/pages/refrigerantes/refrigeranteActions.js");
+/* harmony import */ var _ModalCadastro__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./ModalCadastro */ "./resources/js/pages/refrigerantes/ModalCadastro.jsx");
+/* harmony import */ var _refrigeranteActions__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./refrigeranteActions */ "./resources/js/pages/refrigerantes/refrigeranteActions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -72984,6 +73405,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var mapStateToProps = function mapStateToProps(state) {
   return {
     list: state.refrigerante.list
@@ -72992,7 +73414,7 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({
-    listar: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_15__["listar"]
+    listar: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_16__["listar"]
   }, dispatch);
 };
 
@@ -73069,14 +73491,16 @@ function (_React$Component) {
         title: "Adicionar",
         type: "success",
         "float": "right",
-        icon: "fa fa-fw fa-plus"
+        icon: "fa fa-fw fa-plus",
+        toggle: "modal",
+        target: "#md_cadastro_refrigerantes"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_card_CardBody__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Table__WEBPACK_IMPORTED_MODULE_11__["default"], {
         style: "table-responsive-lg"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Thead__WEBPACK_IMPORTED_MODULE_12__["default"], {
         itens: this.state.thead,
         color: "thead-light",
         align: "center"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Tbody__WEBPACK_IMPORTED_MODULE_13__["default"], null, this.renderItens())))))));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Tbody__WEBPACK_IMPORTED_MODULE_13__["default"], null, this.renderItens())))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ModalCadastro__WEBPACK_IMPORTED_MODULE_15__["default"], null));
     }
   }]);
 
@@ -73091,13 +73515,16 @@ function (_React$Component) {
 /*!*****************************************************************!*\
   !*** ./resources/js/pages/refrigerantes/refrigeranteActions.js ***!
   \*****************************************************************/
-/*! exports provided: listar, salvar */
+/*! exports provided: listar, salvar, listarLitragens, listarSabores, listarTipos */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listar", function() { return listar; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "salvar", function() { return salvar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listarLitragens", function() { return listarLitragens; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listarSabores", function() { return listarSabores; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listarTipos", function() { return listarTipos; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _main_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../main/config */ "./resources/js/main/config.js");
@@ -73131,6 +73558,39 @@ var salvar = function salvar() {
     } else {}
   };
 };
+var listarLitragens = function listarLitragens() {
+  return function (dispatch) {
+    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])('api/litragens');
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (resp) {
+      return dispatch({
+        type: 'LISTAR_LITRAGENS',
+        payload: resp.data
+      });
+    });
+  };
+};
+var listarSabores = function listarSabores() {
+  return function (dispatch) {
+    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])('api/sabores');
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (resp) {
+      return dispatch({
+        type: 'LISTAR_SABORES',
+        payload: resp.data
+      });
+    });
+  };
+};
+var listarTipos = function listarTipos() {
+  return function (dispatch) {
+    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])('api/tipos');
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (resp) {
+      return dispatch({
+        type: 'LISTAR_TIPOS',
+        payload: resp.data
+      });
+    });
+  };
+};
 
 /***/ }),
 
@@ -73150,6 +73610,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var INITIAL_VALUE = {
   list: [],
   filters: {},
+  litragens: [],
+  sabores: [],
+  tipos: [],
   data: {
     valor: "",
     quantidade: "",
@@ -73209,6 +73672,21 @@ var INITIAL_VALUE = {
     case 'LISTAR_REFRIGERANTES':
       return _objectSpread({}, state, {
         list: action.payload
+      });
+
+    case "LISTAR_LITRAGENS":
+      return _objectSpread({}, state, {
+        litragens: action.payload
+      });
+
+    case "LISTAR_SABORES":
+      return _objectSpread({}, state, {
+        sabores: action.payload
+      });
+
+    case "LISTAR_TIPOS":
+      return _objectSpread({}, state, {
+        tipos: action.payload
       });
 
     default:

@@ -13,6 +13,7 @@ import Table from '../../components/table/Table'
 import Thead from '../../components/table/Thead'
 import Tbody from '../../components/table/Tbody'
 import Label from '../../components/form/Label'
+import ModalCadastro from "./ModalCadastro"
 import {listar} from './refrigeranteActions'
 
 const mapStateToProps = state => ({
@@ -85,6 +86,8 @@ class Refrigerantes extends React.Component {
                   type="success"
                   float="right"
                   icon="fa fa-fw fa-plus"
+                  toggle="modal"
+                  target="#md_cadastro_refrigerantes"
                 />
               </CardHeader>
               <CardBody>
@@ -96,6 +99,7 @@ class Refrigerantes extends React.Component {
             </Card>
           </Grid>
         </Row>
+        <ModalCadastro />
       </Page>
     )
   }

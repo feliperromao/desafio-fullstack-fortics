@@ -7,10 +7,11 @@ import React from 'react'
  */
 export default props => (
   <select
+    value={props.value }
     style={props.style}
     name={props.name}
     id={props.id}
-    class={ props.class ? props.class : 'custom-select' }
+    className={ props.class ? props.class : 'custom-select' }
     onChange={props.onChange}
   >
   <option value="">- Selecione -</option>
@@ -19,9 +20,7 @@ export default props => (
       props.data.map( item => (
         <option
           key={item[props.index]}
-          value={item[props.index]}
-          selected={props.value == item[props.index] ? true : false}
-        >
+          value={item[props.index]}>
           {item[props.title]}
         </option>
       )) : null

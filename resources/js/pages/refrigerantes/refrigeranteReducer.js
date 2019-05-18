@@ -1,6 +1,9 @@
 const INITIAL_VALUE = {
   list: [],
   filters: {},
+  litragens: [],
+  sabores: [],
+  tipos: [],
   data: {
     valor: "",
     quantidade: "",
@@ -72,6 +75,24 @@ export default (state = INITIAL_VALUE, action) => {
       return {
         ...state,
         list: action.payload
+      }
+
+    case "LISTAR_LITRAGENS":
+      return {
+        ...state,
+        litragens: action.payload,
+      }
+
+    case "LISTAR_SABORES":
+      return {
+        ...state,
+        sabores: action.payload,
+      }
+
+    case "LISTAR_TIPOS":
+      return {
+        ...state,
+        tipos: action.payload,
       }
 
     default:
