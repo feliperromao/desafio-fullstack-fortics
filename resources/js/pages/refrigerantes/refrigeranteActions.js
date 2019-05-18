@@ -11,3 +11,24 @@ export const listar = () => {
       }))
   }
 }
+
+export const salvar = () => {
+  return (dispatch, getState) => {
+    let url = ''
+    const {
+      id,
+      valor,
+      quantidade,
+      marca,
+      tipo_id,
+      sabor_id,
+      litragem_id,
+    } = getState().refrigerante.data
+
+    if(id){
+      url = base_url('api/')
+    }else{
+      
+    }
+  }
+}

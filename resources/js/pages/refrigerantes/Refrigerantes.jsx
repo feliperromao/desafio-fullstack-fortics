@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect,  } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import format from 'format-number'
 import Page from '../../components/commons/Page'
 import Row from '../../components/layout/Row'
 import Grid from '../../components/layout/Grid'
@@ -11,6 +12,7 @@ import Button from '../../components/button/Button'
 import Table from '../../components/table/Table'
 import Thead from '../../components/table/Thead'
 import Tbody from '../../components/table/Tbody'
+import Label from '../../components/form/Label'
 import {listar} from './refrigeranteActions'
 
 const mapStateToProps = state => ({
@@ -38,10 +40,34 @@ class Refrigerantes extends React.Component {
     const itens = this.props.list || []
     return itens.map( item => (
       <tr key={item.id}>
-        <td>
-          <input type="checkbox"/>
+        <td className="text-center">
+        <div className="custom-control custom-checkbox">
+          <input type="checkbox" className="custom-control-input" id={`select_${item.id}`} />
+          <label className="custom-control-label" htmlFor={`select_${item.id}`}></label>
+        </div>
         </td>
-        <td>{item.marca}</td>
+        <td>
+          <Label
+            to={`select_${item.id}`}
+            title={item.marca} />
+        </td>
+        <td>{item.sabor.descricao}</td>
+        <td>{item.litragem.descricao}</td>
+        <td>{item.tipo.descricao}</td>
+        <td>{item.quantidade}</td>
+        <td>{format({prefix: 'R$ ', decimal: ',', padRight: 2})(item.valor)}</td>
+        <td className="btn-acoes text-center">
+          <Button
+            icon="fas fa-pen"
+            type="outline-secondary"
+            size="sm"
+          />
+          <Button
+            icon="fas fa-trash"
+            type="outline-danger"
+            size="sm"
+          />
+        </td>
       </tr>
     ))
   }
