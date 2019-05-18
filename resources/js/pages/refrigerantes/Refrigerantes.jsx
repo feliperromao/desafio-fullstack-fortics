@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect,  } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import Page from '../../components/commons/Page'
 import Row from '../../components/layout/Row'
 import Grid from '../../components/layout/Grid'
@@ -9,6 +11,14 @@ import Button from '../../components/button/Button'
 import Table from '../../components/table/Table'
 import Thead from '../../components/table/Thead'
 import Tbody from '../../components/table/Tbody'
+import {listar} from './refrigeranteActions'
+
+const mapStateToProps = state => ({
+  list: state.refrigerante.list
+})
+const mapDispatchToProps = dispatch => bindActionCreators({
+  listar,
+}, dispatch)
 
 class Refrigerantes extends React.Component {
 
@@ -20,8 +30,17 @@ class Refrigerantes extends React.Component {
     }
   }
 
-  renderItens(){
+  componentWillMount(){
+    this.props.listar()
+  }
 
+  renderItens(){
+    const itens = this.props.list || []
+    return itens.map( item => (
+      <tr key={item.id}>
+        <td></td>
+      </tr>
+    ))
   }
 
   render() {
@@ -53,4 +72,4 @@ class Refrigerantes extends React.Component {
   }
 }
 
-export default Refrigerantes;
+export default connect(mapStateToProps, mapDispatchToProps)(Refrigerantes);

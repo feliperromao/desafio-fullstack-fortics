@@ -1,7 +1,8 @@
 import axios from 'axios'
+import { base_url } from '../../main/config'
 
-const listar = () => {
+export const listar = () => {
   return (dispatch, getState) => {
-    const 
+    const url = base_url('api/refrigerantes')
   }
 }
