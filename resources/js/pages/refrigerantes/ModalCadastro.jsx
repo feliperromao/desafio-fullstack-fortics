@@ -7,12 +7,13 @@ import ModalBody from "../../components/modal/ModalBody"
 import ModalFooter from "../../components/modal/ModalFooter"
 import Button from "../../components/button/Button"
 import FormCadastro from "./FormCadastro"
+import {salvar} from './refrigeranteActions'
 
 const mapStateToProps = state => ({
 
 })
 const mapDispatchToProps = dispatch => bindActionCreators({
-
+  salvar,
 }, dispatch)
 
 class ModalCadastro extends React.Component {
@@ -35,6 +36,7 @@ class ModalCadastro extends React.Component {
             type="primary"
             title="Salvar"
             icon="fa fa-fw fa-save"
+            onClick={this.props.salvar}
           />
         </ModalFooter>
       </Modal>

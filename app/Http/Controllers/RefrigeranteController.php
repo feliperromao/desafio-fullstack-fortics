@@ -40,6 +40,23 @@ class RefrigeranteController extends Controller
             $response = array('message' => 'Por favor informe os camos obrigatórios');
             return response($response, 400);
         }
+
+        $refrigerante = new Refrigerante();
+        $refrigerante->valor = $valor;
+        $refrigerante->quantidade = $quantidade;
+        $refrigerante->marca = $marca;
+        $refrigerante->tipo_id = $tipo_id;
+        $refrigerante->sabor_id = $sabor_id;
+        $refrigerante->litragem_id = $litragem_id;
+
+        if( $refrigerante->save() ){
+            return response($refrigerante, 201);
+        }else{
+            $message = 'Náo foi possivel adicionar o refrigerante,
+                        verifique se ja existe um refrigerante com a mesma marca e litragem';
+            $response = array('message' => $message);
+            return response($response, 500);
+        }
     }
 
     /**

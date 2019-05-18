@@ -14,7 +14,7 @@ export const listar = () => {
 
 export const salvar = () => {
   return (dispatch, getState) => {
-    let url = ''
+    
     const {
       id,
       valor,
@@ -25,10 +25,25 @@ export const salvar = () => {
       litragem_id,
     } = getState().refrigerante.data
 
+    const config = {headers:{'Content-Type':'multipart-form-data'}}
+
+    const formData = new FormData()
+    formData.append('valor', valor)
+    formData.append('quantidade', quantidade)
+    formData.append('marca', marca)
+    formData.append('tipo_id', tipo_id)
+    formData.append('sabor_id', sabor_id)
+    formData.append('litragem_id', litragem_id)
+
+    let url = ''
     if(id){
-      url = base_url('api/')
+      url = base_url(`api/refrigerantes/${id}`)
+      axios.put(url, formData, config)
+        .then(console.log('Editado com sucesso...'))
     }else{
-      
+      url = base_url('api/refrigerantes')
+      axios.post(url, formData, config)
+        .then(console.log('Adicionado com sucesso...'))
     }
   }
 }
@@ -65,3 +80,33 @@ export const listarTipos = () => {
       }))
   }
 }
+
+export const setValor = value => ({
+  type: 'SET_VALOR',
+  payload: value
+})
+
+export const setQuantidade = value => ({
+  type: 'SET_QUANTIDADE',
+  payload: value
+})
+
+export const setMarca = value => ({
+  type: 'SET_MARCA',
+  payload: value
+})
+
+export const setTipo = value => ({
+  type: 'SET_TIPO',
+  payload: value
+})
+
+export const setSabor = value => ({
+  type: 'SET_SABOR',
+  payload: value
+})
+
+export const setLitragem = value => ({
+  type: 'SET_LITRAGEM',
+  payload: value
+})

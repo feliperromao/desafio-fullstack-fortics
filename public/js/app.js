@@ -73117,6 +73117,12 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({
+    setLitragem: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["setLitragem"],
+    setMarca: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["setMarca"],
+    setQuantidade: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["setQuantidade"],
+    setSabor: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["setSabor"],
+    setTipo: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["setTipo"],
+    setValor: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["setValor"],
     listarLitragens: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["listarLitragens"],
     listarSabores: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["listarSabores"],
     listarTipos: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["listarTipos"]
@@ -73142,6 +73148,102 @@ function (_React$Component) {
       this.props.listarTipos();
     }
   }, {
+    key: "handleChangeMarca",
+    value: function handleChangeMarca(event) {
+      var value = event.target.value;
+      var target = event.target;
+
+      if (!value) {
+        target.classList.remove('is-valid');
+        target.classList.add('is-invalid');
+      } else {
+        target.classList.remove('is-invalid');
+        target.classList.add('is-valid');
+      }
+
+      this.props.setMarca(value);
+    }
+  }, {
+    key: "handleChangeSabor",
+    value: function handleChangeSabor(event) {
+      var value = event.target.value;
+      var target = event.target;
+
+      if (!value) {
+        target.classList.remove('is-valid');
+        target.classList.add('is-invalid');
+      } else {
+        target.classList.remove('is-invalid');
+        target.classList.add('is-valid');
+      }
+
+      this.props.setSabor(value);
+    }
+  }, {
+    key: "handleChangeLitragem",
+    value: function handleChangeLitragem(event) {
+      var value = event.target.value;
+      var target = event.target;
+
+      if (!value) {
+        target.classList.remove('is-valid');
+        target.classList.add('is-invalid');
+      } else {
+        target.classList.remove('is-invalid');
+        target.classList.add('is-valid');
+      }
+
+      this.props.setLitragem(value);
+    }
+  }, {
+    key: "handleChangeTipo",
+    value: function handleChangeTipo(event) {
+      var value = event.target.value;
+      var target = event.target;
+
+      if (!value) {
+        target.classList.remove('is-valid');
+        target.classList.add('is-invalid');
+      } else {
+        target.classList.remove('is-invalid');
+        target.classList.add('is-valid');
+      }
+
+      this.props.setTipo(value);
+    }
+  }, {
+    key: "handleChangeQuantidade",
+    value: function handleChangeQuantidade(event) {
+      var value = event.target.value;
+      var target = event.target;
+
+      if (!value) {
+        target.classList.remove('is-valid');
+        target.classList.add('is-invalid');
+      } else {
+        target.classList.remove('is-invalid');
+        target.classList.add('is-valid');
+      }
+
+      this.props.setQuantidade(value);
+    }
+  }, {
+    key: "handleChangeValor",
+    value: function handleChangeValor(event) {
+      var value = event.target.value;
+      var target = event.target;
+
+      if (!value) {
+        target.classList.remove('is-valid');
+        target.classList.add('is-invalid');
+      } else {
+        target.classList.remove('is-invalid');
+        target.classList.add('is-valid');
+      }
+
+      this.props.setValor(value);
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Row__WEBPACK_IMPORTED_MODULE_6__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -73155,7 +73257,7 @@ function (_React$Component) {
         required: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         value: this.props.marca,
-        onChange: function onChange() {},
+        onChange: this.handleChangeMarca.bind(this),
         placeholder: "Ex: Cola Cola",
         id: "marca",
         className: "form-control",
@@ -73172,7 +73274,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Select__WEBPACK_IMPORTED_MODULE_3__["default"], {
         data: this.props.sabores,
         value: this.props.sabor_id,
-        onChange: function onChange() {},
+        onChange: this.handleChangeSabor.bind(this),
         id: "sabor",
         index: "id",
         title: "descricao"
@@ -73188,7 +73290,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Select__WEBPACK_IMPORTED_MODULE_3__["default"], {
         data: this.props.litragens,
         value: this.props.litragem_id,
-        onChange: function onChange() {},
+        onChange: this.handleChangeLitragem.bind(this),
         id: "litragem",
         index: "id",
         title: "descricao"
@@ -73204,7 +73306,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Select__WEBPACK_IMPORTED_MODULE_3__["default"], {
         data: this.props.tipos,
         value: this.props.tipo_id,
-        onChange: function onChange() {},
+        onChange: this.handleChangeTipo.bind(this),
         id: "tipo",
         index: "id",
         title: "descricao"
@@ -73219,7 +73321,7 @@ function (_React$Component) {
         required: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         value: this.props.quantidade,
-        onChange: function onChange() {},
+        onChange: this.handleChangeQuantidade.bind(this),
         valor: "quantidade",
         min: 0,
         className: "form-control",
@@ -73235,7 +73337,7 @@ function (_React$Component) {
         required: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         value: this.props.valor,
-        onChange: function onChange() {},
+        onChange: this.handleChangeValor.bind(this),
         id: "valor",
         min: 0,
         step: "0.01",
@@ -73271,6 +73373,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_modal_ModalFooter__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/modal/ModalFooter */ "./resources/js/components/modal/ModalFooter.jsx");
 /* harmony import */ var _components_button_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/button/Button */ "./resources/js/components/button/Button.jsx");
 /* harmony import */ var _FormCadastro__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./FormCadastro */ "./resources/js/pages/refrigerantes/FormCadastro.jsx");
+/* harmony import */ var _refrigeranteActions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./refrigeranteActions */ "./resources/js/pages/refrigerantes/refrigeranteActions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -73299,12 +73402,15 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var mapStateToProps = function mapStateToProps(state) {
   return {};
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({}, dispatch);
+  return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({
+    salvar: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_9__["salvar"]
+  }, dispatch);
 };
 
 var ModalCadastro =
@@ -73330,7 +73436,8 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_button_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
         type: "primary",
         title: "Salvar",
-        icon: "fa fa-fw fa-save"
+        icon: "fa fa-fw fa-save",
+        onClick: this.props.salvar
       })));
     }
   }]);
@@ -73515,7 +73622,7 @@ function (_React$Component) {
 /*!*****************************************************************!*\
   !*** ./resources/js/pages/refrigerantes/refrigeranteActions.js ***!
   \*****************************************************************/
-/*! exports provided: listar, salvar, listarLitragens, listarSabores, listarTipos */
+/*! exports provided: listar, salvar, listarLitragens, listarSabores, listarTipos, setValor, setQuantidade, setMarca, setTipo, setSabor, setLitragem */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73525,6 +73632,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listarLitragens", function() { return listarLitragens; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listarSabores", function() { return listarSabores; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listarTipos", function() { return listarTipos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setValor", function() { return setValor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setQuantidade", function() { return setQuantidade; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setMarca", function() { return setMarca; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setTipo", function() { return setTipo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setSabor", function() { return setSabor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setLitragem", function() { return setLitragem; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _main_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../main/config */ "./resources/js/main/config.js");
@@ -73543,7 +73656,6 @@ var listar = function listar() {
 };
 var salvar = function salvar() {
   return function (dispatch, getState) {
-    var url = '';
     var _getState$refrigerant = getState().refrigerante.data,
         id = _getState$refrigerant.id,
         valor = _getState$refrigerant.valor,
@@ -73552,10 +73664,27 @@ var salvar = function salvar() {
         tipo_id = _getState$refrigerant.tipo_id,
         sabor_id = _getState$refrigerant.sabor_id,
         litragem_id = _getState$refrigerant.litragem_id;
+    var config = {
+      headers: {
+        'Content-Type': 'multipart-form-data'
+      }
+    };
+    var formData = new FormData();
+    formData.append('valor', valor);
+    formData.append('quantidade', quantidade);
+    formData.append('marca', marca);
+    formData.append('tipo_id', tipo_id);
+    formData.append('sabor_id', sabor_id);
+    formData.append('litragem_id', litragem_id);
+    var url = '';
 
     if (id) {
-      url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])('api/');
-    } else {}
+      url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])("api/refrigerantes/".concat(id));
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(url, formData, config).then(console.log('Editado com sucesso...'));
+    } else {
+      url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])('api/refrigerantes');
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, formData, config).then(console.log('Adicionado com sucesso...'));
+    }
   };
 };
 var listarLitragens = function listarLitragens() {
@@ -73589,6 +73718,42 @@ var listarTipos = function listarTipos() {
         payload: resp.data
       });
     });
+  };
+};
+var setValor = function setValor(value) {
+  return {
+    type: 'SET_VALOR',
+    payload: value
+  };
+};
+var setQuantidade = function setQuantidade(value) {
+  return {
+    type: 'SET_QUANTIDADE',
+    payload: value
+  };
+};
+var setMarca = function setMarca(value) {
+  return {
+    type: 'SET_MARCA',
+    payload: value
+  };
+};
+var setTipo = function setTipo(value) {
+  return {
+    type: 'SET_TIPO',
+    payload: value
+  };
+};
+var setSabor = function setSabor(value) {
+  return {
+    type: 'SET_SABOR',
+    payload: value
+  };
+};
+var setLitragem = function setLitragem(value) {
+  return {
+    type: 'SET_LITRAGEM',
+    payload: value
   };
 };
 

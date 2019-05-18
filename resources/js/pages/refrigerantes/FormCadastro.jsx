@@ -6,6 +6,12 @@ import Label from '../../components/form/Label'
 import Grid from '../../components/layout/Grid'
 import Row from '../../components/layout/Row'
 import {
+  setLitragem,
+  setMarca,
+  setQuantidade,
+  setSabor,
+  setTipo,
+  setValor,
   listarLitragens,
   listarSabores,
   listarTipos,
@@ -23,6 +29,12 @@ const mapStateToProps = state => ({
   tipos: state.refrigerante.tipos,
 })
 const mapDispatchToProps = dispatch => bindActionCreators({
+  setLitragem,
+  setMarca,
+  setQuantidade,
+  setSabor,
+  setTipo,
+  setValor,
   listarLitragens,
   listarSabores,
   listarTipos,
@@ -36,6 +48,101 @@ class FormCadastro extends React.Component {
     this.props.listarTipos()
   }
 
+  handleChangeMarca(event){
+    const value = event.target.value
+    const target = event.target
+
+    if(!value){
+      target.classList.remove('is-valid')
+      target.classList.add('is-invalid')
+    }else{
+      target.classList.remove('is-invalid')
+      target.classList.add('is-valid')
+    }
+
+    this.props.setMarca(value)
+  }
+
+  handleChangeSabor(event){
+    const value = event.target.value
+    const target = event.target
+
+    if(!value){
+      target.classList.remove('is-valid')
+      target.classList.add('is-invalid')
+    }else{
+      target.classList.remove('is-invalid')
+      target.classList.add('is-valid')
+    }
+
+    this.props.setSabor(value)
+
+  }
+
+  handleChangeLitragem(event){
+    const value = event.target.value
+    const target = event.target
+
+    if(!value){
+      target.classList.remove('is-valid')
+      target.classList.add('is-invalid')
+    }else{
+      target.classList.remove('is-invalid')
+      target.classList.add('is-valid')
+    }
+
+    this.props.setLitragem(value)
+
+  }
+
+  handleChangeTipo(event){
+    const value = event.target.value
+    const target = event.target
+
+    if(!value){
+      target.classList.remove('is-valid')
+      target.classList.add('is-invalid')
+    }else{
+      target.classList.remove('is-invalid')
+      target.classList.add('is-valid')
+    }
+
+    this.props.setTipo(value)
+
+  }
+
+  handleChangeQuantidade(event){
+    const value = event.target.value
+    const target = event.target
+
+    if(!value){
+      target.classList.remove('is-valid')
+      target.classList.add('is-invalid')
+    }else{
+      target.classList.remove('is-invalid')
+      target.classList.add('is-valid')
+    }
+
+    this.props.setQuantidade(value)
+
+  }
+
+  handleChangeValor(event){
+    const value = event.target.value
+    const target = event.target
+
+    if(!value){
+      target.classList.remove('is-valid')
+      target.classList.add('is-invalid')
+    }else{
+      target.classList.remove('is-invalid')
+      target.classList.add('is-valid')
+    }
+
+    this.props.setValor(value)
+  
+  }
+
   render() {
     return (
       <form>
@@ -45,7 +152,7 @@ class FormCadastro extends React.Component {
               <Label to="marca" title="Marca: " required={true} />
               <input
                 value={this.props.marca}
-                onChange={() => {}}
+                onChange={this.handleChangeMarca.bind(this)}
                 placeholder="Ex: Cola Cola"
                 id="marca"
                 className="form-control"
@@ -58,7 +165,7 @@ class FormCadastro extends React.Component {
               <Select
                 data={this.props.sabores}
                 value={this.props.sabor_id}
-                onChange={() => {}}
+                onChange={this.handleChangeSabor.bind(this)}
                 id="sabor"
                 index="id"
                 title="descricao"
@@ -73,7 +180,7 @@ class FormCadastro extends React.Component {
               <Select
                 data={this.props.litragens}
                 value={this.props.litragem_id}
-                onChange={() => {}}
+                onChange={this.handleChangeLitragem.bind(this)}
                 id="litragem"
                 index="id"
                 title="descricao"
@@ -86,7 +193,7 @@ class FormCadastro extends React.Component {
               <Select
                 data={this.props.tipos}
                 value={this.props.tipo_id}
-                onChange={() => {}}
+                onChange={this.handleChangeTipo.bind(this)}
                 id="tipo"
                 index="id"
                 title="descricao"
@@ -100,7 +207,7 @@ class FormCadastro extends React.Component {
               <Label to="quantidade" title="Quantidade: " required />
               <input
                 value={this.props.quantidade}
-                onChange={() => {}}
+                onChange={this.handleChangeQuantidade.bind(this)}
                 valor="quantidade"
                 min={0}
                 className="form-control"
@@ -112,7 +219,7 @@ class FormCadastro extends React.Component {
               <Label to="valor" title="Valor (R$): " required />
               <input
                 value={this.props.valor}
-                onChange={() => {}}
+                onChange={this.handleChangeValor.bind(this)}
                 id="valor"
                 min={0}
                 step="0.01"
