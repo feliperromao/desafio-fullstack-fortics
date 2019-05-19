@@ -12,6 +12,7 @@ import {salvar} from './refrigeranteActions'
 const mapStateToProps = state => ({
 
 })
+
 const mapDispatchToProps = dispatch => bindActionCreators({
   salvar,
 }, dispatch)

@@ -74453,6 +74453,43 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/commons/validate.js":
+/*!******************************************!*\
+  !*** ./resources/js/commons/validate.js ***!
+  \******************************************/
+/*! exports provided: validate, setInvalid, setValid, resetValidate */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validate", function() { return validate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setInvalid", function() { return setInvalid; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setValid", function() { return setValid; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetValidate", function() { return resetValidate; });
+var validate = function validate(element) {
+  if (element.value) {
+    element.classList.remove('is-invalid');
+    element.classList.add('is-valid');
+  } else {
+    element.classList.remove('is-valid');
+    element.classList.add('is-invalid');
+  }
+};
+var setInvalid = function setInvalid(element) {
+  element.classList.remove('is-valid');
+  element.classList.add('is-invalid');
+};
+var setValid = function setValid(element) {
+  element.classList.remove('is-invalid');
+  element.classList.add('is-valid');
+};
+var resetValidate = function resetValidate(element) {
+  element.classList.remove('is-invalid');
+  element.classList.remove('is-valid');
+};
+
+/***/ }),
+
 /***/ "./resources/js/components/button/Button.jsx":
 /*!***************************************************!*\
   !*** ./resources/js/components/button/Button.jsx ***!
@@ -75196,6 +75233,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+ // import FormSearch from "./FormSearch"
 
 /* harmony default export */ __webpack_exports__["default"] = (function (props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
@@ -75205,24 +75243,7 @@ __webpack_require__.r(__webpack_exports__);
     className: "btn btn-link d-md-none rounded-circle mr-3"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fa fa-bars"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    className: "d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "text",
-    className: "form-control bg-light border-0 small",
-    placeholder: "Search for...",
-    "aria-label": "Search",
-    "aria-describedby": "basic-addon2"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "input-group-append"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-primary",
-    type: "button"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fas fa-search fa-sm"
-  }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "navbar-nav ml-auto"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "nav-item dropdown no-arrow d-sm-none"
@@ -75719,7 +75740,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_form_Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/form/Label */ "./resources/js/components/form/Label.jsx");
 /* harmony import */ var _components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/layout/Grid */ "./resources/js/components/layout/Grid.jsx");
 /* harmony import */ var _components_layout_Row__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/layout/Row */ "./resources/js/components/layout/Row.jsx");
-/* harmony import */ var _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./refrigeranteActions */ "./resources/js/pages/refrigerantes/refrigeranteActions.js");
+/* harmony import */ var _commons_validate__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../commons/validate */ "./resources/js/commons/validate.js");
+/* harmony import */ var _refrigeranteActions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./refrigeranteActions */ "./resources/js/pages/refrigerantes/refrigeranteActions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -75747,6 +75769,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var mapStateToProps = function mapStateToProps(state) {
   return {
     valor: state.refrigerante.data.valor,
@@ -75763,15 +75786,12 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({
-    setLitragem: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["setLitragem"],
-    setMarca: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["setMarca"],
-    setQuantidade: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["setQuantidade"],
-    setSabor: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["setSabor"],
-    setTipo: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["setTipo"],
-    setValor: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["setValor"],
-    listarLitragens: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["listarLitragens"],
-    listarSabores: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["listarSabores"],
-    listarTipos: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_7__["listarTipos"]
+    setLitragem: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_8__["setLitragem"],
+    setMarca: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_8__["setMarca"],
+    setQuantidade: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_8__["setQuantidade"],
+    setSabor: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_8__["setSabor"],
+    setTipo: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_8__["setTipo"],
+    setValor: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_8__["setValor"]
   }, dispatch);
 };
 
@@ -75787,107 +75807,58 @@ function (_React$Component) {
   }
 
   _createClass(FormCadastro, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      this.props.listarLitragens();
-      this.props.listarSabores();
-      this.props.listarTipos();
-    }
-  }, {
     key: "handleChangeMarca",
     value: function handleChangeMarca(event) {
       var value = event.target.value;
-      var target = event.target;
-
-      if (!value) {
-        target.classList.remove('is-valid');
-        target.classList.add('is-invalid');
-      } else {
-        target.classList.remove('is-invalid');
-        target.classList.add('is-valid');
-      }
-
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_7__["validate"])(event.target);
       this.props.setMarca(value);
     }
   }, {
     key: "handleChangeSabor",
     value: function handleChangeSabor(event) {
       var value = event.target.value;
-      var target = event.target;
-
-      if (!value) {
-        target.classList.remove('is-valid');
-        target.classList.add('is-invalid');
-      } else {
-        target.classList.remove('is-invalid');
-        target.classList.add('is-valid');
-      }
-
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_7__["validate"])(event.target);
       this.props.setSabor(value);
     }
   }, {
     key: "handleChangeLitragem",
     value: function handleChangeLitragem(event) {
       var value = event.target.value;
-      var target = event.target;
-
-      if (!value) {
-        target.classList.remove('is-valid');
-        target.classList.add('is-invalid');
-      } else {
-        target.classList.remove('is-invalid');
-        target.classList.add('is-valid');
-      }
-
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_7__["validate"])(event.target);
       this.props.setLitragem(value);
     }
   }, {
     key: "handleChangeTipo",
     value: function handleChangeTipo(event) {
       var value = event.target.value;
-      var target = event.target;
-
-      if (!value) {
-        target.classList.remove('is-valid');
-        target.classList.add('is-invalid');
-      } else {
-        target.classList.remove('is-invalid');
-        target.classList.add('is-valid');
-      }
-
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_7__["validate"])(event.target);
       this.props.setTipo(value);
     }
   }, {
     key: "handleChangeQuantidade",
     value: function handleChangeQuantidade(event) {
       var value = event.target.value;
-      var target = event.target;
 
-      if (!value) {
-        target.classList.remove('is-valid');
-        target.classList.add('is-invalid');
+      if (!value || isNaN(value)) {
+        Object(_commons_validate__WEBPACK_IMPORTED_MODULE_7__["setInvalid"])(event.target);
       } else {
-        target.classList.remove('is-invalid');
-        target.classList.add('is-valid');
+        Object(_commons_validate__WEBPACK_IMPORTED_MODULE_7__["setValid"])(event.target);
       }
 
-      this.props.setQuantidade(value);
+      if (!isNaN(value)) this.props.setQuantidade(value);
     }
   }, {
     key: "handleChangeValor",
     value: function handleChangeValor(event) {
       var value = event.target.value;
-      var target = event.target;
 
-      if (!value) {
-        target.classList.remove('is-valid');
-        target.classList.add('is-invalid');
+      if (!value || isNaN(value)) {
+        Object(_commons_validate__WEBPACK_IMPORTED_MODULE_7__["setInvalid"])(event.target);
       } else {
-        target.classList.remove('is-invalid');
-        target.classList.add('is-valid');
+        Object(_commons_validate__WEBPACK_IMPORTED_MODULE_7__["setValid"])(event.target);
       }
 
-      this.props.setValor(value);
+      if (!isNaN(value)) this.props.setValor(value);
     }
   }, {
     key: "render",
@@ -75970,8 +75941,7 @@ function (_React$Component) {
         onChange: this.handleChangeQuantidade.bind(this),
         id: "quantidade",
         min: 0,
-        className: "form-control",
-        type: "number"
+        className: "form-control"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
         sm: "12",
         md: "6"
@@ -75987,8 +75957,7 @@ function (_React$Component) {
         id: "valor",
         min: 0,
         step: "0.01",
-        className: "form-control",
-        type: "number"
+        className: "form-control"
       })))));
     }
   }]);
@@ -76123,7 +76092,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_form_Label__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/form/Label */ "./resources/js/components/form/Label.jsx");
 /* harmony import */ var _ModalCadastro__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./ModalCadastro */ "./resources/js/pages/refrigerantes/ModalCadastro.jsx");
 /* harmony import */ var _components_modal_ModalConfirmaExclusao__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/modal/ModalConfirmaExclusao */ "./resources/js/components/modal/ModalConfirmaExclusao.jsx");
-/* harmony import */ var _refrigeranteActions__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./refrigeranteActions */ "./resources/js/pages/refrigerantes/refrigeranteActions.js");
+/* harmony import */ var _commons_validate__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../commons/validate */ "./resources/js/commons/validate.js");
+/* harmony import */ var _refrigeranteActions__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./refrigeranteActions */ "./resources/js/pages/refrigerantes/refrigeranteActions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -76161,6 +76131,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var mapStateToProps = function mapStateToProps(state) {
   return {
     list: state.refrigerante.list
@@ -76169,10 +76140,13 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({
-    listar: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_17__["listar"],
-    excluir: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_17__["excluir"],
-    clearData: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_17__["clearData"],
-    setRefrigerante: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_17__["setRefrigerante"]
+    listar: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_18__["listar"],
+    listarLitragens: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_18__["listarLitragens"],
+    listarSabores: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_18__["listarSabores"],
+    listarTipos: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_18__["listarTipos"],
+    excluir: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_18__["excluir"],
+    clearData: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_18__["clearData"],
+    setRefrigerante: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_18__["setRefrigerante"]
   }, dispatch);
 };
 
@@ -76198,28 +76172,31 @@ function (_React$Component) {
     key: "componentWillMount",
     value: function componentWillMount() {
       this.props.listar();
+      this.props.listarLitragens();
+      this.props.listarSabores();
+      this.props.listarTipos();
     }
   }, {
     key: "handleAdicionar",
     value: function handleAdicionar() {
       this.props.clearData();
-      $('#marca').removeClass('is-valid');
-      $('#marca').removeClass('is-invalid');
-      $('#sabor').removeClass('is-valid');
-      $('#sabor').removeClass('is-invalid');
-      $('#litragem').removeClass('is-valid');
-      $('#litragem').removeClass('is-invalid');
-      $('#tipo').removeClass('is-valid');
-      $('#tipo').removeClass('is-invalid');
-      $('#quantidade').removeClass('is-valid');
-      $('#quantidade').removeClass('is-invalid');
-      $('#valor').removeClass('is-valid');
-      $('#valor').removeClass('is-invalid');
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("marca"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("sabor"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("litragem"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("tipo"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("quantidade"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("valor"));
     }
   }, {
     key: "handleEditar",
     value: function handleEditar(item) {
       this.props.setRefrigerante(item);
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("marca"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("sabor"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("litragem"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("tipo"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("quantidade"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("valor"));
     }
   }, {
     key: "handleExcluir",
@@ -76347,16 +76324,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearData", function() { return clearData; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _main_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../main/config */ "./resources/js/main/config.js");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/esm/react-toastify.js");
+/* harmony import */ var _commons_validate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../commons/validate */ "./resources/js/commons/validate.js");
+/* harmony import */ var _main_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../main/config */ "./resources/js/main/config.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/esm/react-toastify.js");
 
 
 
-react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].configure();
+
+react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].configure();
 var listar = function listar() {
   return function (dispatch) {
     showLoading();
-    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])('api/refrigerantes');
+    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])('api/refrigerantes');
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (resp) {
       return dispatch({
         type: 'LISTAR_REFRIGERANTES',
@@ -76364,13 +76343,18 @@ var listar = function listar() {
       });
     }).then(hideLoading())["catch"](function (err) {
       hideLoading();
-      react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].error('Náo foi possivel conectar com o servidor...');
+      react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].error('Náo foi possivel conectar com o servidor...');
     });
   };
 };
 var salvar = function salvar() {
   return function (dispatch, getState) {
-    showLoading();
+    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_1__["validate"])(document.getElementById("marca"));
+    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_1__["validate"])(document.getElementById("sabor"));
+    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_1__["validate"])(document.getElementById("litragem"));
+    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_1__["validate"])(document.getElementById("tipo"));
+    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_1__["validate"])(document.getElementById("quantidade"));
+    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_1__["validate"])(document.getElementById("valor"));
     var _getState$refrigerant = getState().refrigerante.data,
         id = _getState$refrigerant.id,
         valor = _getState$refrigerant.valor,
@@ -76379,55 +76363,61 @@ var salvar = function salvar() {
         tipo_id = _getState$refrigerant.tipo_id,
         sabor_id = _getState$refrigerant.sabor_id,
         litragem_id = _getState$refrigerant.litragem_id;
-    var config = {
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded'
-      }
-    };
-    var formData = new FormData();
-    formData.append('valor', valor);
-    formData.append('quantidade', quantidade);
-    formData.append('marca', marca);
-    formData.append('tipo_id', tipo_id);
-    formData.append('sabor_id', sabor_id);
-    formData.append('litragem_id', litragem_id);
-    var url = '';
 
-    if (id) {
-      formData.append('_method', 'PUT');
-      url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])("api/refrigerantes/".concat(id));
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, formData, config).then(dispatch(listar())).then(function (_) {
-        hideLoading();
-        react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].success('Atualizado com sucesso!');
-      })["catch"](function (_) {
-        hideLoading();
-        react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].error('Náo foi possivel salvar...');
-      });
+    if (valor && quantidade && marca && tipo_id && sabor_id && litragem_id) {
+      showLoading();
+      var config = {
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded'
+        }
+      };
+      var formData = new FormData();
+      formData.append('valor', valor);
+      formData.append('quantidade', quantidade);
+      formData.append('marca', marca);
+      formData.append('tipo_id', tipo_id);
+      formData.append('sabor_id', sabor_id);
+      formData.append('litragem_id', litragem_id);
+      var url = '';
+
+      if (id) {
+        formData.append('_method', 'PUT');
+        url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])("api/refrigerantes/".concat(id));
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, formData, config).then(dispatch(listar())).then(function (_) {
+          hideLoading();
+          react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].success('Atualizado com sucesso!');
+        })["catch"](function (_) {
+          hideLoading();
+          react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].error('Náo foi possivel salvar...');
+        });
+      } else {
+        url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])('api/refrigerantes');
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, formData, config).then(dispatch(listar())).then(function (_) {
+          hideLoading();
+          react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].success('Adicionado com sucesso!');
+        })["catch"](function (_) {
+          hideLoading();
+          react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].error('Náo foi possivel salvar...');
+        });
+      }
     } else {
-      url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])('api/refrigerantes');
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, formData, config).then(dispatch(listar())).then(function (_) {
-        hideLoading();
-        react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].success('Adicionado com sucesso!');
-      })["catch"](function (_) {
-        hideLoading();
-        react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].error('Náo foi possivel salvar...');
-      });
+      react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].error('Por favor preencha os campos obrigatórios.');
     }
   };
 };
 var excluir = function excluir(id) {
   return function (dispatch) {
-    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])("api/refrigerantes/".concat(id));
+    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])("api/refrigerantes/".concat(id));
     axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"](url).then(dispatch(listar())).then(function (_) {
-      react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].warn('Excluido com sucesso!');
+      react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].warn('Excluido com sucesso!');
     })["catch"](function (_) {
-      return react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].error('Náo foi possivel excluir...');
+      return react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].error('Náo foi possivel excluir...');
     });
   };
 };
 var listarLitragens = function listarLitragens() {
   return function (dispatch) {
-    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])('api/litragens');
+    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])('api/litragens');
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (resp) {
       return dispatch({
         type: 'LISTAR_LITRAGENS',
@@ -76438,7 +76428,7 @@ var listarLitragens = function listarLitragens() {
 };
 var listarSabores = function listarSabores() {
   return function (dispatch) {
-    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])('api/sabores');
+    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])('api/sabores');
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (resp) {
       return dispatch({
         type: 'LISTAR_SABORES',
@@ -76449,7 +76439,7 @@ var listarSabores = function listarSabores() {
 };
 var listarTipos = function listarTipos() {
   return function (dispatch) {
-    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])('api/tipos');
+    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])('api/tipos');
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (resp) {
       return dispatch({
         type: 'LISTAR_TIPOS',

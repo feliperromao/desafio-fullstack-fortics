@@ -15,13 +15,26 @@ import Tbody from '../../components/table/Tbody'
 import Label from '../../components/form/Label'
 import ModalCadastro from "./ModalCadastro"
 import ModalExcluir from '../../components/modal/ModalConfirmaExclusao'
-import {listar, excluir, clearData, setRefrigerante} from './refrigeranteActions'
+import {resetValidate} from "../../commons/validate"
+import {
+  listar,
+  excluir,
+  clearData,
+  setRefrigerante,
+  listarLitragens,
+  listarSabores,
+  listarTipos,
+} from './refrigeranteActions'
 
 const mapStateToProps = state => ({
   list: state.refrigerante.list
 })
+
 const mapDispatchToProps = dispatch => bindActionCreators({
   listar,
+  listarLitragens,
+  listarSabores,
+  listarTipos,
   excluir,
   clearData,
   setRefrigerante,
@@ -40,31 +53,32 @@ class Refrigerantes extends React.Component {
 
   componentWillMount(){
     this.props.listar()
+    this.props.listarLitragens()
+    this.props.listarSabores()
+    this.props.listarTipos()
   }
 
   handleAdicionar(){
     this.props.clearData()
-    $('#marca').removeClass('is-valid')
-    $('#marca').removeClass('is-invalid')
 
-    $('#sabor').removeClass('is-valid')
-    $('#sabor').removeClass('is-invalid')
+    resetValidate(document.getElementById("marca"))
+    resetValidate(document.getElementById("sabor"))
+    resetValidate(document.getElementById("litragem"))
+    resetValidate(document.getElementById("tipo"))
+    resetValidate(document.getElementById("quantidade"))
+    resetValidate(document.getElementById("valor"))
 
-    $('#litragem').removeClass('is-valid')
-    $('#litragem').removeClass('is-invalid')
-
-    $('#tipo').removeClass('is-valid')
-    $('#tipo').removeClass('is-invalid')
-
-    $('#quantidade').removeClass('is-valid')
-    $('#quantidade').removeClass('is-invalid')
-
-    $('#valor').removeClass('is-valid')
-    $('#valor').removeClass('is-invalid')
   }
 
   handleEditar(item){
     this.props.setRefrigerante(item)
+
+    resetValidate(document.getElementById("marca"))
+    resetValidate(document.getElementById("sabor"))
+    resetValidate(document.getElementById("litragem"))
+    resetValidate(document.getElementById("tipo"))
+    resetValidate(document.getElementById("quantidade"))
+    resetValidate(document.getElementById("valor"))
   }
 
   handleExcluir(id){

@@ -5,6 +5,7 @@ import Select from '../../components/form/Select'
 import Label from '../../components/form/Label'
 import Grid from '../../components/layout/Grid'
 import Row from '../../components/layout/Row'
+import {validate, setValid, setInvalid} from "../../commons/validate"
 import {
   setLitragem,
   setMarca,
@@ -12,9 +13,6 @@ import {
   setSabor,
   setTipo,
   setValor,
-  listarLitragens,
-  listarSabores,
-  listarTipos,
 } from './refrigeranteActions'
 
 const mapStateToProps = state => ({
@@ -28,6 +26,7 @@ const mapStateToProps = state => ({
   sabores: state.refrigerante.sabores,
   tipos: state.refrigerante.tipos,
 })
+
 const mapDispatchToProps = dispatch => bindActionCreators({
   setLitragem,
   setMarca,
@@ -35,111 +34,61 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   setSabor,
   setTipo,
   setValor,
-  listarLitragens,
-  listarSabores,
-  listarTipos,
 }, dispatch)
 
 class FormCadastro extends React.Component {
 
-  componentWillMount(){
-    this.props.listarLitragens()
-    this.props.listarSabores()
-    this.props.listarTipos()
-  }
-
   handleChangeMarca(event){
     const value = event.target.value
-    const target = event.target
 
-    if(!value){
-      target.classList.remove('is-valid')
-      target.classList.add('is-invalid')
-    }else{
-      target.classList.remove('is-invalid')
-      target.classList.add('is-valid')
-    }
-
+    validate(event.target)
     this.props.setMarca(value)
   }
 
   handleChangeSabor(event){
     const value = event.target.value
-    const target = event.target
 
-    if(!value){
-      target.classList.remove('is-valid')
-      target.classList.add('is-invalid')
-    }else{
-      target.classList.remove('is-invalid')
-      target.classList.add('is-valid')
-    }
-
+    validate(event.target)
     this.props.setSabor(value)
-
   }
 
   handleChangeLitragem(event){
     const value = event.target.value
-    const target = event.target
 
-    if(!value){
-      target.classList.remove('is-valid')
-      target.classList.add('is-invalid')
-    }else{
-      target.classList.remove('is-invalid')
-      target.classList.add('is-valid')
-    }
-
+    validate(event.target)
     this.props.setLitragem(value)
-
   }
 
   handleChangeTipo(event){
     const value = event.target.value
-    const target = event.target
 
-    if(!value){
-      target.classList.remove('is-valid')
-      target.classList.add('is-invalid')
-    }else{
-      target.classList.remove('is-invalid')
-      target.classList.add('is-valid')
-    }
-
+    validate(event.target)
     this.props.setTipo(value)
-
   }
 
   handleChangeQuantidade(event){
     const value = event.target.value
-    const target = event.target
 
-    if(!value){
-      target.classList.remove('is-valid')
-      target.classList.add('is-invalid')
+    if(!value || isNaN(value)){
+      setInvalid(event.target)
     }else{
-      target.classList.remove('is-invalid')
-      target.classList.add('is-valid')
+      setValid(event.target)
     }
-
-    this.props.setQuantidade(value)
+    
+    if(!isNaN(value)) this.props.setQuantidade(value)
 
   }
 
   handleChangeValor(event){
     const value = event.target.value
-    const target = event.target
 
-    if(!value){
-      target.classList.remove('is-valid')
-      target.classList.add('is-invalid')
+    if(!value || isNaN(value)){
+      setInvalid(event.target)
     }else{
-      target.classList.remove('is-invalid')
-      target.classList.add('is-valid')
+      setValid(event.target)
     }
-
-    this.props.setValor(value)
+    
+    if(!isNaN(value)) this.props.setValor(value)
   
   }
 
@@ -210,8 +159,7 @@ class FormCadastro extends React.Component {
                 onChange={this.handleChangeQuantidade.bind(this)}
                 id="quantidade"
                 min={0}
-                className="form-control"
-                type="number"/>
+                className="form-control" />
             </div>
           </Grid>
           <Grid sm="12" md="6">
@@ -223,8 +171,7 @@ class FormCadastro extends React.Component {
                 id="valor"
                 min={0}
                 step="0.01"
-                className="form-control"
-                type="number"/>
+                className="form-control" />
             </div>
           </Grid>
         </Row>
