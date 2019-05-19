@@ -15,7 +15,7 @@ export const listar = () => {
       .then(hideLoading())
       .catch(err => {
         hideLoading()
-        toast('Náo foi possivel conectar com o servidor...')
+        toast.error('Náo foi possivel conectar com o servidor...')
       })
   }
 }
@@ -33,7 +33,7 @@ export const salvar = () => {
       litragem_id,
     } = getState().refrigerante.data
 
-    const config = {headers:{'Content-Type':'multipart-form-data'}}
+    const config = {headers:{'content-type': 'application/x-www-form-urlencoded'}}
 
     const formData = new FormData()
     formData.append('valor', valor)
@@ -45,16 +45,18 @@ export const salvar = () => {
 
     let url = ''
     if(id){
+      formData.append('_method', 'PUT')
+      
       url = base_url(`api/refrigerantes/${id}`)
-      axios.put(url, formData, config)
+      axios.post(url, formData, config)
         .then(dispatch(listar()))
         .then(_ => {
           hideLoading()
-          toast('Atualizado com sucesso!')
+          toast.success('Atualizado com sucesso!')
         })
         .catch(_ => {
           hideLoading()
-          toast('Náo foi possivel salvar...')
+          toast.error('Náo foi possivel salvar...')
         })
     }else{
       url = base_url('api/refrigerantes')
@@ -62,11 +64,11 @@ export const salvar = () => {
         .then(dispatch(listar()))
         .then(_ => {
           hideLoading()
-          toast('Adicionado com sucesso!')
+          toast.success('Adicionado com sucesso!')
         })
         .catch(_ => {
           hideLoading()
-          toast('Náo foi possivel salvar...')
+          toast.error('Náo foi possivel salvar...')
         })
     }
   }
@@ -78,8 +80,9 @@ export const excluir = id => {
     axios.delete(url)
       .then(dispatch(listar()))
       .then(_ => {
-        toast('Excluido com sucesso!')
+        toast.warn('Excluido com sucesso!')
       })
+      .catch(_ => toast.error('Náo foi possivel excluir...'))
   }
 }
 

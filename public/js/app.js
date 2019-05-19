@@ -76364,7 +76364,7 @@ var listar = function listar() {
       });
     }).then(hideLoading())["catch"](function (err) {
       hideLoading();
-      Object(react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"])('Náo foi possivel conectar com o servidor...');
+      react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].error('Náo foi possivel conectar com o servidor...');
     });
   };
 };
@@ -76381,7 +76381,7 @@ var salvar = function salvar() {
         litragem_id = _getState$refrigerant.litragem_id;
     var config = {
       headers: {
-        'Content-Type': 'multipart-form-data'
+        'content-type': 'application/x-www-form-urlencoded'
       }
     };
     var formData = new FormData();
@@ -76394,22 +76394,23 @@ var salvar = function salvar() {
     var url = '';
 
     if (id) {
+      formData.append('_method', 'PUT');
       url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])("api/refrigerantes/".concat(id));
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.put(url, formData, config).then(dispatch(listar())).then(function (_) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, formData, config).then(dispatch(listar())).then(function (_) {
         hideLoading();
-        Object(react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"])('Atualizado com sucesso!');
+        react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].success('Atualizado com sucesso!');
       })["catch"](function (_) {
         hideLoading();
-        Object(react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"])('Náo foi possivel salvar...');
+        react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].error('Náo foi possivel salvar...');
       });
     } else {
       url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])('api/refrigerantes');
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, formData, config).then(dispatch(listar())).then(function (_) {
         hideLoading();
-        Object(react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"])('Adicionado com sucesso!');
+        react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].success('Adicionado com sucesso!');
       })["catch"](function (_) {
         hideLoading();
-        Object(react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"])('Náo foi possivel salvar...');
+        react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].error('Náo foi possivel salvar...');
       });
     }
   };
@@ -76418,7 +76419,9 @@ var excluir = function excluir(id) {
   return function (dispatch) {
     var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])("api/refrigerantes/".concat(id));
     axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"](url).then(dispatch(listar())).then(function (_) {
-      Object(react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"])('Excluido com sucesso!');
+      react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].warn('Excluido com sucesso!');
+    })["catch"](function (_) {
+      return react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].error('Náo foi possivel excluir...');
     });
   };
 };
