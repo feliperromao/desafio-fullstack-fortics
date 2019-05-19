@@ -12,9 +12,19 @@ class RefrigeranteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $refrigerantes = Refrigerante::with('sabor', 'tipo', 'litragem')->paginate(10);
+        $where = array();
+        if( $request->litragem ) $where['litragem_id'] = $request->litragem;
+
+        $refrigerantes = Refrigerante::with('sabor', 'tipo', 'litragem')
+                        ->where($where)
+                        ->where('marca', 'like', "%$request->marca%")
+                        ->where('valor', '>=', $request->valor_min ? $request->valor_min : 0 )
+                        ->where('valor', '<=', $request->valor_max ? $request->valor_max : 9999999999999 )
+                        ->where('quantidade', '>=', $request->quantidade_min ? $request->quantidade_min : 0 )
+                        ->where('quantidade', '<=', $request->quantidade_max ? $request->quantidade_max : 9999999999999 )
+                        ->paginate(10);
 
         return response($refrigerantes);
     }

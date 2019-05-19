@@ -6,6 +6,7 @@ import Label from '../../components/form/Label'
 import Grid from '../../components/layout/Grid'
 import Row from '../../components/layout/Row'
 import Button from "../../components/button/Button"
+import { listar as pesquisar } from "./refrigeranteActions"
 import {
   filtrarMarca,
   filtrarLitragem,
@@ -26,6 +27,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
+  pesquisar,
   filtrarMarca,
   filtrarLitragem,
   filtrarValorMin,
@@ -59,7 +61,7 @@ class FormPesquisa extends React.Component {
                 value={this.props.litragem}
                 onChange={event => this.props.filtrarLitragem(event.target.value)}
                 className="custom-select custom-select-sm"
-                id="litragem"
+                id="filtro_litragem"
                 index="id"
                 title="descricao"
               />
@@ -67,7 +69,7 @@ class FormPesquisa extends React.Component {
           </Grid>
           <Grid lg="3" md="4" sm="6" xs="12">
             <div className="form-group">
-              <Label to="filtro_valor" title="Valor:" />
+              <Label to="filtro_valor" title="Preço:" />
               <div className="input-group">
                 <input
                   value={this.props.valor_min}
@@ -104,17 +106,19 @@ class FormPesquisa extends React.Component {
             </div>
           </Grid>
           <Grid lg="1" md="6" sm="12" sx="12">
-            <div style={{marginTop: 30, paddingBottom: 30}} className="form-group">
+            <div style={{marginTop: 30}} className="form-group">
               <Button
                 type="primary"
                 icon="fa fa-fw fa-search"
                 float="right"
                 size="block"
                 size2="sm"
+                onClick={this.props.pesquisar}
               />
             </div>
           </Grid>
         </Row>
+        <hr/>
       </form>
     )
   }

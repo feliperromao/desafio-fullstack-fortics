@@ -75633,16 +75633,20 @@ function (_React$Component) {
 /*!*************************************!*\
   !*** ./resources/js/main/config.js ***!
   \*************************************/
-/*! exports provided: base_url */
+/*! exports provided: base_url, setUrlParams */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "base_url", function() { return base_url; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setUrlParams", function() { return setUrlParams; });
 var APP_URL = 'http://localhost:8000/';
 var base_url = function base_url() {
   var uri = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   return APP_URL + uri;
+};
+var setUrlParams = function setUrlParams(url, param, value) {
+  if (url.indexOf('?') == -1) {} else {}
 };
 
 /***/ }),
@@ -75991,7 +75995,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/layout/Grid */ "./resources/js/components/layout/Grid.jsx");
 /* harmony import */ var _components_layout_Row__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/layout/Row */ "./resources/js/components/layout/Row.jsx");
 /* harmony import */ var _components_button_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/button/Button */ "./resources/js/components/button/Button.jsx");
-/* harmony import */ var _pesquisaActions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pesquisaActions */ "./resources/js/pages/refrigerantes/pesquisaActions.js");
+/* harmony import */ var _refrigeranteActions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./refrigeranteActions */ "./resources/js/pages/refrigerantes/refrigeranteActions.js");
+/* harmony import */ var _pesquisaActions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pesquisaActions */ "./resources/js/pages/refrigerantes/pesquisaActions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -76020,6 +76025,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var mapStateToProps = function mapStateToProps(state) {
   return {
     litragens: state.refrigerante.litragens,
@@ -76034,12 +76040,13 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({
-    filtrarMarca: _pesquisaActions__WEBPACK_IMPORTED_MODULE_8__["filtrarMarca"],
-    filtrarLitragem: _pesquisaActions__WEBPACK_IMPORTED_MODULE_8__["filtrarLitragem"],
-    filtrarValorMin: _pesquisaActions__WEBPACK_IMPORTED_MODULE_8__["filtrarValorMin"],
-    filtrarvalorMax: _pesquisaActions__WEBPACK_IMPORTED_MODULE_8__["filtrarvalorMax"],
-    filtrarQuantidadeMin: _pesquisaActions__WEBPACK_IMPORTED_MODULE_8__["filtrarQuantidadeMin"],
-    filtrarQuantidadeMax: _pesquisaActions__WEBPACK_IMPORTED_MODULE_8__["filtrarQuantidadeMax"]
+    pesquisar: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_8__["listar"],
+    filtrarMarca: _pesquisaActions__WEBPACK_IMPORTED_MODULE_9__["filtrarMarca"],
+    filtrarLitragem: _pesquisaActions__WEBPACK_IMPORTED_MODULE_9__["filtrarLitragem"],
+    filtrarValorMin: _pesquisaActions__WEBPACK_IMPORTED_MODULE_9__["filtrarValorMin"],
+    filtrarvalorMax: _pesquisaActions__WEBPACK_IMPORTED_MODULE_9__["filtrarvalorMax"],
+    filtrarQuantidadeMin: _pesquisaActions__WEBPACK_IMPORTED_MODULE_9__["filtrarQuantidadeMin"],
+    filtrarQuantidadeMax: _pesquisaActions__WEBPACK_IMPORTED_MODULE_9__["filtrarQuantidadeMax"]
   }, dispatch);
 };
 
@@ -76094,7 +76101,7 @@ function (_React$Component) {
           return _this.props.filtrarLitragem(event.target.value);
         },
         className: "custom-select custom-select-sm",
-        id: "litragem",
+        id: "filtro_litragem",
         index: "id",
         title: "descricao"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -76106,7 +76113,7 @@ function (_React$Component) {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Label__WEBPACK_IMPORTED_MODULE_4__["default"], {
         to: "filtro_valor",
-        title: "Valor:"
+        title: "Pre\xE7o:"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -76156,8 +76163,7 @@ function (_React$Component) {
         sx: "12"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
-          marginTop: 30,
-          paddingBottom: 30
+          marginTop: 30
         },
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_button_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -76165,8 +76171,9 @@ function (_React$Component) {
         icon: "fa fa-fw fa-search",
         "float": "right",
         size: "block",
-        size2: "sm"
-      })))));
+        size2: "sm",
+        onClick: this.props.pesquisar
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null));
     }
   }]);
 
@@ -76660,9 +76667,26 @@ __webpack_require__.r(__webpack_exports__);
 
 react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].configure();
 var listar = function listar() {
-  return function (dispatch) {
+  return function (dispatch, getState) {
     showLoading();
-    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])('api/refrigerantes');
+    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])('api/refrigerantes?');
+    var _getState$pesquisa = getState().pesquisa,
+        marca = _getState$pesquisa.marca,
+        litragem = _getState$pesquisa.litragem,
+        valor_min = _getState$pesquisa.valor_min,
+        valor_max = _getState$pesquisa.valor_max,
+        quantidade_min = _getState$pesquisa.quantidade_min,
+        quantidade_max = _getState$pesquisa.quantidade_max;
+
+    if (marca || litragem || valor_min || valor_max || quantidade_min || quantidade_max) {
+      if (marca) url += "marca=".concat(marca);
+      if (litragem) url += "&litragem=".concat(litragem);
+      if (valor_min) url += "&valor_min=".concat(valor_min);
+      if (valor_max) url += "&valor_max=".concat(valor_max);
+      if (quantidade_min) url += "&quantidade_min=".concat(quantidade_min);
+      if (quantidade_max) url += "&quantidade_max=".concat(quantidade_max);
+    }
+
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (resp) {
       return dispatch({
         type: 'LISTAR_REFRIGERANTES',

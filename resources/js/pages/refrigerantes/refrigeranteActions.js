@@ -5,9 +5,28 @@ import { toast } from 'react-toastify';
 toast.configure()
 
 export const listar = () => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     showLoading()
-    const url = base_url('api/refrigerantes')
+    let url = base_url('api/refrigerantes?')
+
+    const {
+      marca,
+      litragem,
+      valor_min,
+      valor_max,
+      quantidade_min,
+      quantidade_max,
+    } = getState().pesquisa
+
+    if(marca || litragem || valor_min || valor_max || quantidade_min || quantidade_max){
+      if(marca) url += `marca=${marca}`
+      if(litragem) url += `&litragem=${litragem}`
+      if(valor_min) url += `&valor_min=${valor_min}`
+      if(valor_max) url += `&valor_max=${valor_max}`
+      if(quantidade_min) url += `&quantidade_min=${quantidade_min}`
+      if(quantidade_max) url += `&quantidade_max=${quantidade_max}`
+    }
+
     axios.get(url)
       .then(resp => dispatch({
         type: 'LISTAR_REFRIGERANTES',
