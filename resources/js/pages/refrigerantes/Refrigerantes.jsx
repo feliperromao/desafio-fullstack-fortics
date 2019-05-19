@@ -15,6 +15,7 @@ import Tbody from '../../components/table/Tbody'
 import Label from '../../components/form/Label'
 import ModalCadastro from "./ModalCadastro"
 import ModalExcluir from '../../components/modal/ModalConfirmaExclusao'
+import FormPesquisa from "./FormPesquisa"
 import {resetValidate} from "../../commons/validate"
 import {
   listar,
@@ -152,6 +153,7 @@ class Refrigerantes extends React.Component {
                 />
               </CardHeader>
               <CardBody>
+                <FormPesquisa />
                 <Table style="table-responsive-lg">
                   <Thead itens={this.state.thead} color="thead-light" align="center" />
                   <Tbody>{this.renderItens()}</Tbody>

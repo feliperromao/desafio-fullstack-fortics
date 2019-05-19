@@ -74763,7 +74763,7 @@ __webpack_require__.r(__webpack_exports__);
     style: props.style,
     name: props.name,
     id: props.id,
-    className: props["class"] ? props["class"] : 'custom-select',
+    className: props.className ? props.className : 'custom-select',
     onChange: props.onChange
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: ""
@@ -75969,6 +75969,164 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./resources/js/pages/refrigerantes/FormPesquisa.jsx":
+/*!***********************************************************!*\
+  !*** ./resources/js/pages/refrigerantes/FormPesquisa.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _components_form_Select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/form/Select */ "./resources/js/components/form/Select.jsx");
+/* harmony import */ var _components_form_Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/form/Label */ "./resources/js/components/form/Label.jsx");
+/* harmony import */ var _components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/layout/Grid */ "./resources/js/components/layout/Grid.jsx");
+/* harmony import */ var _components_layout_Row__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/layout/Row */ "./resources/js/components/layout/Row.jsx");
+/* harmony import */ var _components_button_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/button/Button */ "./resources/js/components/button/Button.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    litragens: state.refrigerante.litragens
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({}, dispatch);
+};
+
+var FormPesquisa =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(FormPesquisa, _React$Component);
+
+  function FormPesquisa() {
+    _classCallCheck(this, FormPesquisa);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(FormPesquisa).apply(this, arguments));
+  }
+
+  _createClass(FormPesquisa, [{
+    key: "handleChangeLitragem",
+    value: function handleChangeLitragem() {}
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Row__WEBPACK_IMPORTED_MODULE_6__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        lg: "3",
+        md: "4",
+        sm: "6",
+        xs: "12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Label__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        to: "filtro_marca",
+        title: "Marca:"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control form-control-sm",
+        type: "text",
+        id: "filtro_marca"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        lg: "3",
+        md: "4",
+        sm: "6",
+        xs: "12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Label__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        to: "filtro_litragem",
+        title: "Litragem:"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Select__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        data: this.props.litragens,
+        value: this.props.litragem_id,
+        onChange: this.handleChangeLitragem.bind(this),
+        className: "custom-select custom-select-sm",
+        id: "litragem",
+        index: "id",
+        title: "descricao"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        lg: "3",
+        md: "4",
+        sm: "6",
+        xs: "12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Label__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        to: "filtro_valor",
+        title: "Valor:"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control form-control-sm",
+        placeholder: "min"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control form-control-sm",
+        placeholder: "max"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        lg: "3",
+        md: "4",
+        sm: "6",
+        xs: "12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Label__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        to: "filtro_quantidade",
+        title: "Quantidade:"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control form-control-sm",
+        placeholder: "min"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "form-control form-control-sm",
+        placeholder: "max"
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Row__WEBPACK_IMPORTED_MODULE_6__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        lg: "12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_button_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        type: "secondary",
+        icon: "fa fa-fw fa-search",
+        title: "Pesquisar",
+        "float": "right"
+      }))));
+    }
+  }]);
+
+  return FormPesquisa;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(FormPesquisa));
+
+/***/ }),
+
 /***/ "./resources/js/pages/refrigerantes/ModalCadastro.jsx":
 /*!************************************************************!*\
   !*** ./resources/js/pages/refrigerantes/ModalCadastro.jsx ***!
@@ -76092,8 +76250,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_form_Label__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/form/Label */ "./resources/js/components/form/Label.jsx");
 /* harmony import */ var _ModalCadastro__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./ModalCadastro */ "./resources/js/pages/refrigerantes/ModalCadastro.jsx");
 /* harmony import */ var _components_modal_ModalConfirmaExclusao__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/modal/ModalConfirmaExclusao */ "./resources/js/components/modal/ModalConfirmaExclusao.jsx");
-/* harmony import */ var _commons_validate__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../commons/validate */ "./resources/js/commons/validate.js");
-/* harmony import */ var _refrigeranteActions__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./refrigeranteActions */ "./resources/js/pages/refrigerantes/refrigeranteActions.js");
+/* harmony import */ var _FormPesquisa__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./FormPesquisa */ "./resources/js/pages/refrigerantes/FormPesquisa.jsx");
+/* harmony import */ var _commons_validate__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../commons/validate */ "./resources/js/commons/validate.js");
+/* harmony import */ var _refrigeranteActions__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./refrigeranteActions */ "./resources/js/pages/refrigerantes/refrigeranteActions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -76132,6 +76291,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var mapStateToProps = function mapStateToProps(state) {
   return {
     list: state.refrigerante.list
@@ -76140,13 +76300,13 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({
-    listar: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_18__["listar"],
-    listarLitragens: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_18__["listarLitragens"],
-    listarSabores: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_18__["listarSabores"],
-    listarTipos: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_18__["listarTipos"],
-    excluir: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_18__["excluir"],
-    clearData: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_18__["clearData"],
-    setRefrigerante: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_18__["setRefrigerante"]
+    listar: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_19__["listar"],
+    listarLitragens: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_19__["listarLitragens"],
+    listarSabores: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_19__["listarSabores"],
+    listarTipos: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_19__["listarTipos"],
+    excluir: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_19__["excluir"],
+    clearData: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_19__["clearData"],
+    setRefrigerante: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_19__["setRefrigerante"]
   }, dispatch);
 };
 
@@ -76180,23 +76340,23 @@ function (_React$Component) {
     key: "handleAdicionar",
     value: function handleAdicionar() {
       this.props.clearData();
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("marca"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("sabor"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("litragem"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("tipo"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("quantidade"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("valor"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("marca"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("sabor"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("litragem"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("tipo"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("quantidade"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("valor"));
     }
   }, {
     key: "handleEditar",
     value: function handleEditar(item) {
       this.props.setRefrigerante(item);
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("marca"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("sabor"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("litragem"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("tipo"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("quantidade"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_17__["resetValidate"])(document.getElementById("valor"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("marca"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("sabor"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("litragem"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("tipo"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("quantidade"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("valor"));
     }
   }, {
     key: "handleExcluir",
@@ -76277,7 +76437,7 @@ function (_React$Component) {
         toggle: "modal",
         target: "#md_cadastro_refrigerantes",
         onClick: this.handleAdicionar.bind(this)
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_card_CardBody__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Table__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_card_CardBody__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormPesquisa__WEBPACK_IMPORTED_MODULE_17__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Table__WEBPACK_IMPORTED_MODULE_11__["default"], {
         style: "table-responsive-lg"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Thead__WEBPACK_IMPORTED_MODULE_12__["default"], {
         itens: this.state.thead,

@@ -11,7 +11,7 @@ export default props => (
     style={props.style}
     name={props.name}
     id={props.id}
-    className={ props.class ? props.class : 'custom-select' }
+    className={ props.className ? props.className : 'custom-select' }
     onChange={props.onChange}
   >
   <option value="">- Selecione -</option>
