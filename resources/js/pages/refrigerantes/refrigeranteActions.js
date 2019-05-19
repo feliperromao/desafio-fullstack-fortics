@@ -1,20 +1,28 @@
 import axios from 'axios'
 import { base_url } from '../../main/config'
+import { toast } from 'react-toastify';
+toast.configure()
 
 export const listar = () => {
   return (dispatch, getState) => {
+    showLoading()
     const url = base_url('api/refrigerantes')
     axios.get(url)
       .then( resp => dispatch({
         type: 'LISTAR_REFRIGERANTES',
         payload: resp.data ? resp.data.data : []
       }))
+      .then(hideLoading())
+      .catch(err => {
+        hideLoading()
+        toast('Náo foi possivel conectar com o servidor...')
+      })
   }
 }
 
 export const salvar = () => {
   return (dispatch, getState) => {
-    
+    showLoading()
     const {
       id,
       valor,
@@ -39,12 +47,39 @@ export const salvar = () => {
     if(id){
       url = base_url(`api/refrigerantes/${id}`)
       axios.put(url, formData, config)
-        .then(console.log('Editado com sucesso...'))
+        .then(dispatch(listar()))
+        .then(_ => {
+          hideLoading()
+          toast('Atualizado com sucesso!')
+        })
+        .catch(_ => {
+          hideLoading()
+          toast('Náo foi possivel salvar...')
+        })
     }else{
       url = base_url('api/refrigerantes')
       axios.post(url, formData, config)
-        .then(console.log('Adicionado com sucesso...'))
+        .then(dispatch(listar()))
+        .then(_ => {
+          hideLoading()
+          toast('Adicionado com sucesso!')
+        })
+        .catch(_ => {
+          hideLoading()
+          toast('Náo foi possivel salvar...')
+        })
     }
+  }
+}
+
+export const excluir = id => {
+  return dispatch => {
+    const url = base_url(`api/refrigerantes/${id}`)
+    axios.delete(url)
+      .then(dispatch(listar()))
+      .then(_ => {
+        toast('Excluido com sucesso!')
+      })
   }
 }
 

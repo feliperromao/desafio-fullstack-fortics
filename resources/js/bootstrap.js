@@ -10,6 +10,7 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
+    require('react-toastify/dist/ReactToastify.css');
     require('@fortawesome/fontawesome-free/css/all.min.css')
     require('bootstrap/dist/css/bootstrap.min.css');
     require('bootstrap/dist/js/bootstrap.bundle')

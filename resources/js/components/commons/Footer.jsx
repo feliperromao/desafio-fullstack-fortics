@@ -7,5 +7,10 @@ export default props => (
           <span>Copyright &copy; Felipe Romão 2019</span>
         </div>
       </div>
+      <div className="loading hidden">
+        <div className="spinner-border text-primary" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+      </div>
     </footer>
 )

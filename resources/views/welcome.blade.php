@@ -14,6 +14,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
+    <script src="js/loading.js"></script>
     <script src="js/app.js"></script>
     <script src="js/sb-admin.min.js"></script>
   </body>

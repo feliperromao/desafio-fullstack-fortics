@@ -14,13 +14,15 @@ import Thead from '../../components/table/Thead'
 import Tbody from '../../components/table/Tbody'
 import Label from '../../components/form/Label'
 import ModalCadastro from "./ModalCadastro"
-import {listar} from './refrigeranteActions'
+import ModalExcluir from '../../components/modal/ModalConfirmaExclusao'
+import {listar, excluir} from './refrigeranteActions'
 
 const mapStateToProps = state => ({
   list: state.refrigerante.list
 })
 const mapDispatchToProps = dispatch => bindActionCreators({
   listar,
+  excluir,
 }, dispatch)
 
 class Refrigerantes extends React.Component {
@@ -29,12 +31,27 @@ class Refrigerantes extends React.Component {
     super(props)
 
     this.state = {
+      id_excluir: "",
       thead: ['Selecionar', 'Marca', 'Sabor', 'Litragem', 'Tipo', 'Quantidade', 'Preço', 'Editar/Excluir']
     }
   }
 
   componentWillMount(){
     this.props.listar()
+  }
+
+  handleEditar(item){
+    this.props.setItem(item)
+  }
+
+  handleExcluir(id){
+    const state = this.state
+    state.id_excluir = id
+    this.setState(state)
+  }
+
+  confirmaExcluir(){
+    this.props.excluir(this.state.id_excluir)
   }
 
   renderItens(){
@@ -64,6 +81,9 @@ class Refrigerantes extends React.Component {
             size="sm"
           />
           <Button
+            onClick={() => this.handleExcluir(item.id)}
+            toggle="modal"
+            target="#md_excluir_refrigerante"
             icon="fas fa-trash"
             type="outline-danger"
             size="sm"
@@ -100,6 +120,12 @@ class Refrigerantes extends React.Component {
           </Grid>
         </Row>
         <ModalCadastro />
+        <ModalExcluir
+          id="md_excluir_refrigerante"
+          title="Excluir Refrigerante"
+          mensagem="Tem certeza que deseja excluir?"
+          confirmarExclusao={this.confirmaExcluir.bind(this)}
+          />
       </Page>
     )
   }
