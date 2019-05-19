@@ -13,6 +13,7 @@ import Table from '../../components/table/Table'
 import Thead from '../../components/table/Thead'
 import Tbody from '../../components/table/Tbody'
 import Label from '../../components/form/Label'
+import Pagination from "../../components/pagination/Pagination"
 import ModalCadastro from "./ModalCadastro"
 import ModalExcluir from '../../components/modal/ModalConfirmaExclusao'
 import FormPesquisa from "./FormPesquisa"
@@ -28,7 +29,9 @@ import {
 } from './refrigeranteActions'
 
 const mapStateToProps = state => ({
-  list: state.refrigerante.list
+  list: state.refrigerante.list,
+  current_page: state.refrigerante.paginate.current_page,
+  last_page: state.refrigerante.paginate.last_page,
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
@@ -158,6 +161,11 @@ class Refrigerantes extends React.Component {
                   <Thead itens={this.state.thead} color="thead-light" align="center" />
                   <Tbody>{this.renderItens()}</Tbody>
                 </Table>
+                <Pagination
+                  current_page={this.props.current_page}
+                  last_page={this.props.last_page}
+                  onClick={this.props.listar}
+                  />
               </CardBody>
             </Card>
           </Grid>

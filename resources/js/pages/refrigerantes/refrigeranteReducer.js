@@ -13,6 +13,10 @@ const INITIAL_VALUE = {
   sabores: [],
   tipos: [],
   data: DEFAULT_DATA,
+  paginate: {
+    current_page: 1,
+    last_page: 1,
+  }
 }
 
 export default (state = INITIAL_VALUE, action) => {
@@ -105,6 +109,15 @@ export default (state = INITIAL_VALUE, action) => {
       return {
         ...state,
         tipos: action.payload,
+      }
+
+    case "UPDATE_PAGINATE":
+      return {
+        ...state,
+        paginate: {
+          current_page: action.payload.current_page,
+          last_page: action.payload.last_page
+        }
       }
 
     default:

@@ -75401,6 +75401,112 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/pagination/Pagination.jsx":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/pagination/Pagination.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Pagination; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _PaginationLink__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PaginationLink */ "./resources/js/components/pagination/PaginationLink.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Pagination =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Pagination, _React$Component);
+
+  function Pagination() {
+    _classCallCheck(this, Pagination);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Pagination).apply(this, arguments));
+  }
+
+  _createClass(Pagination, [{
+    key: "renderItens",
+    value: function renderItens() {
+      var itens = [];
+
+      for (var i = 1; i <= this.props.last_page; i++) {
+        itens.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PaginationLink__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: i,
+          current: this.props.current_page,
+          onClick: this.props.onClick,
+          page: i
+        }));
+      }
+
+      return itens;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "pagination"
+      }, this.renderItens()));
+    }
+  }]);
+
+  return Pagination;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/pagination/PaginationLink.jsx":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/pagination/PaginationLink.jsx ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function (props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "page-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: props.current == props.page ? 'page-link text-secondary' : 'page-link text-primary',
+    style: {
+      cursor: 'pointer',
+      textDecoration: 'underline'
+    },
+    onClick: function onClick() {
+      return props.onClick(props.page);
+    }
+  }, props.page));
+});
+
+/***/ }),
+
 /***/ "./resources/js/components/table/Table.jsx":
 /*!*************************************************!*\
   !*** ./resources/js/components/table/Table.jsx ***!
@@ -76305,11 +76411,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_table_Thead__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/table/Thead */ "./resources/js/components/table/Thead.jsx");
 /* harmony import */ var _components_table_Tbody__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/table/Tbody */ "./resources/js/components/table/Tbody.jsx");
 /* harmony import */ var _components_form_Label__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/form/Label */ "./resources/js/components/form/Label.jsx");
-/* harmony import */ var _ModalCadastro__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./ModalCadastro */ "./resources/js/pages/refrigerantes/ModalCadastro.jsx");
-/* harmony import */ var _components_modal_ModalConfirmaExclusao__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/modal/ModalConfirmaExclusao */ "./resources/js/components/modal/ModalConfirmaExclusao.jsx");
-/* harmony import */ var _FormPesquisa__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./FormPesquisa */ "./resources/js/pages/refrigerantes/FormPesquisa.jsx");
-/* harmony import */ var _commons_validate__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../commons/validate */ "./resources/js/commons/validate.js");
-/* harmony import */ var _refrigeranteActions__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./refrigeranteActions */ "./resources/js/pages/refrigerantes/refrigeranteActions.js");
+/* harmony import */ var _components_pagination_Pagination__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/pagination/Pagination */ "./resources/js/components/pagination/Pagination.jsx");
+/* harmony import */ var _ModalCadastro__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./ModalCadastro */ "./resources/js/pages/refrigerantes/ModalCadastro.jsx");
+/* harmony import */ var _components_modal_ModalConfirmaExclusao__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/modal/ModalConfirmaExclusao */ "./resources/js/components/modal/ModalConfirmaExclusao.jsx");
+/* harmony import */ var _FormPesquisa__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./FormPesquisa */ "./resources/js/pages/refrigerantes/FormPesquisa.jsx");
+/* harmony import */ var _commons_validate__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../commons/validate */ "./resources/js/commons/validate.js");
+/* harmony import */ var _refrigeranteActions__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./refrigeranteActions */ "./resources/js/pages/refrigerantes/refrigeranteActions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -76349,21 +76456,24 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    list: state.refrigerante.list
+    list: state.refrigerante.list,
+    current_page: state.refrigerante.paginate.current_page,
+    last_page: state.refrigerante.paginate.last_page
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({
-    listar: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_19__["listar"],
-    listarLitragens: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_19__["listarLitragens"],
-    listarSabores: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_19__["listarSabores"],
-    listarTipos: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_19__["listarTipos"],
-    excluir: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_19__["excluir"],
-    clearData: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_19__["clearData"],
-    setRefrigerante: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_19__["setRefrigerante"]
+    listar: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_20__["listar"],
+    listarLitragens: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_20__["listarLitragens"],
+    listarSabores: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_20__["listarSabores"],
+    listarTipos: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_20__["listarTipos"],
+    excluir: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_20__["excluir"],
+    clearData: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_20__["clearData"],
+    setRefrigerante: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_20__["setRefrigerante"]
   }, dispatch);
 };
 
@@ -76397,23 +76507,23 @@ function (_React$Component) {
     key: "handleAdicionar",
     value: function handleAdicionar() {
       this.props.clearData();
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("marca"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("sabor"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("litragem"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("tipo"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("quantidade"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("valor"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_19__["resetValidate"])(document.getElementById("marca"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_19__["resetValidate"])(document.getElementById("sabor"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_19__["resetValidate"])(document.getElementById("litragem"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_19__["resetValidate"])(document.getElementById("tipo"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_19__["resetValidate"])(document.getElementById("quantidade"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_19__["resetValidate"])(document.getElementById("valor"));
     }
   }, {
     key: "handleEditar",
     value: function handleEditar(item) {
       this.props.setRefrigerante(item);
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("marca"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("sabor"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("litragem"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("tipo"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("quantidade"));
-      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_18__["resetValidate"])(document.getElementById("valor"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_19__["resetValidate"])(document.getElementById("marca"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_19__["resetValidate"])(document.getElementById("sabor"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_19__["resetValidate"])(document.getElementById("litragem"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_19__["resetValidate"])(document.getElementById("tipo"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_19__["resetValidate"])(document.getElementById("quantidade"));
+      Object(_commons_validate__WEBPACK_IMPORTED_MODULE_19__["resetValidate"])(document.getElementById("valor"));
     }
   }, {
     key: "handleExcluir",
@@ -76494,13 +76604,17 @@ function (_React$Component) {
         toggle: "modal",
         target: "#md_cadastro_refrigerantes",
         onClick: this.handleAdicionar.bind(this)
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_card_CardBody__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormPesquisa__WEBPACK_IMPORTED_MODULE_17__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Table__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_card_CardBody__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormPesquisa__WEBPACK_IMPORTED_MODULE_18__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Table__WEBPACK_IMPORTED_MODULE_11__["default"], {
         style: "table-responsive-lg"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Thead__WEBPACK_IMPORTED_MODULE_12__["default"], {
         itens: this.state.thead,
         color: "thead-light",
         align: "center"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Tbody__WEBPACK_IMPORTED_MODULE_13__["default"], null, this.renderItens())))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ModalCadastro__WEBPACK_IMPORTED_MODULE_15__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_modal_ModalConfirmaExclusao__WEBPACK_IMPORTED_MODULE_16__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Tbody__WEBPACK_IMPORTED_MODULE_13__["default"], null, this.renderItens())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_pagination_Pagination__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        current_page: this.props.current_page,
+        last_page: this.props.last_page,
+        onClick: this.props.listar
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ModalCadastro__WEBPACK_IMPORTED_MODULE_16__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_modal_ModalConfirmaExclusao__WEBPACK_IMPORTED_MODULE_17__["default"], {
         id: "md_excluir_refrigerante",
         title: "Excluir Refrigerante",
         mensagem: "Tem certeza que deseja excluir?",
@@ -76667,9 +76781,10 @@ __webpack_require__.r(__webpack_exports__);
 
 react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].configure();
 var listar = function listar() {
+  var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
   return function (dispatch, getState) {
     showLoading();
-    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])('api/refrigerantes?');
+    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])("api/refrigerantes?page=".concat(page));
     var _getState$pesquisa = getState().pesquisa,
         marca = _getState$pesquisa.marca,
         litragem = _getState$pesquisa.litragem,
@@ -76679,7 +76794,7 @@ var listar = function listar() {
         quantidade_max = _getState$pesquisa.quantidade_max;
 
     if (marca || litragem || valor_min || valor_max || quantidade_min || quantidade_max) {
-      if (marca) url += "marca=".concat(marca);
+      if (marca) url += "&marca=".concat(marca);
       if (litragem) url += "&litragem=".concat(litragem);
       if (valor_min) url += "&valor_min=".concat(valor_min);
       if (valor_max) url += "&valor_max=".concat(valor_max);
@@ -76688,6 +76803,13 @@ var listar = function listar() {
     }
 
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (resp) {
+      // Capturar as informações de paginação
+      dispatch({
+        type: "UPDATE_PAGINATE",
+        payload: resp.data
+      });
+      return resp;
+    }).then(function (resp) {
       return dispatch({
         type: 'LISTAR_REFRIGERANTES',
         payload: resp.data ? resp.data.data : []
@@ -76875,7 +76997,11 @@ var INITIAL_VALUE = {
   litragens: [],
   sabores: [],
   tipos: [],
-  data: DEFAULT_DATA
+  data: DEFAULT_DATA,
+  paginate: {
+    current_page: 1,
+    last_page: 1
+  }
 };
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : INITIAL_VALUE;
@@ -76952,6 +77078,14 @@ var INITIAL_VALUE = {
     case "LISTAR_TIPOS":
       return _objectSpread({}, state, {
         tipos: action.payload
+      });
+
+    case "UPDATE_PAGINATE":
+      return _objectSpread({}, state, {
+        paginate: {
+          current_page: action.payload.current_page,
+          last_page: action.payload.last_page
+        }
       });
 
     default:

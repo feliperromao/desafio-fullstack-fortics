@@ -4,10 +4,10 @@ import { base_url } from '../../main/config'
 import { toast } from 'react-toastify';
 toast.configure()
 
-export const listar = () => {
+export const listar = (page = 1) => {
   return (dispatch, getState) => {
     showLoading()
-    let url = base_url('api/refrigerantes?')
+    let url = base_url(`api/refrigerantes?page=${page}`)
 
     const {
       marca,
@@ -19,7 +19,7 @@ export const listar = () => {
     } = getState().pesquisa
 
     if(marca || litragem || valor_min || valor_max || quantidade_min || quantidade_max){
-      if(marca) url += `marca=${marca}`
+      if(marca) url += `&marca=${marca}`
       if(litragem) url += `&litragem=${litragem}`
       if(valor_min) url += `&valor_min=${valor_min}`
       if(valor_max) url += `&valor_max=${valor_max}`
@@ -28,6 +28,11 @@ export const listar = () => {
     }
 
     axios.get(url)
+      .then(resp => {
+        // Capturar as informações de paginação
+        dispatch({type: "UPDATE_PAGINATE", payload: resp.data})
+        return resp
+      })
       .then(resp => dispatch({
         type: 'LISTAR_REFRIGERANTES',
         payload: resp.data ? resp.data.data : []
