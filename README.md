@@ -1,4 +1,6 @@
 ## Requisitos
+- PHP 7+
+- MySQL
 - Composer
 - Node JS
 - NPM
@@ -10,6 +12,7 @@
 - MySSQL
 - React JS
 - Redux
+- Bootstrap
 
 ## Como instalar
 
@@ -34,7 +37,7 @@ Caso queira implementar alguma mudança no front-end execute o seguinte comando
 para que o servidor do webpack fique monitorando as mudanças
 
 ```sh
-watch
+$ npm run watch
 ```
 
 Renomear o arquivo `.env.example` para `.env`
