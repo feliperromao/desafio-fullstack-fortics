@@ -4,6 +4,7 @@ class Button extends React.Component{
   render(){
     let style = `btn btn-${this.props.type}`
     if ( this.props.size ) style += ` btn-${this.props.size}`
+    if ( this.props.size2 ) style += ` btn-${this.props.size2}`
     if( this.props.float ) style += ` float-${this.props.float}`
     return(
       <button

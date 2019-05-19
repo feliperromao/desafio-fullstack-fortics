@@ -74537,6 +74537,7 @@ function (_React$Component) {
     value: function render() {
       var style = "btn btn-".concat(this.props.type);
       if (this.props.size) style += " btn-".concat(this.props.size);
+      if (this.props.size2) style += " btn-".concat(this.props.size2);
       if (this.props["float"]) style += " float-".concat(this.props["float"]);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: this.props.id,
@@ -75657,10 +75658,13 @@ var base_url = function base_url() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _pages_refrigerantes_refrigeranteReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pages/refrigerantes/refrigeranteReducer */ "./resources/js/pages/refrigerantes/refrigeranteReducer.js");
+/* harmony import */ var _pages_refrigerantes_pesquisaReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../pages/refrigerantes/pesquisaReducer */ "./resources/js/pages/refrigerantes/pesquisaReducer.js");
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  refrigerante: _pages_refrigerantes_refrigeranteReducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  refrigerante: _pages_refrigerantes_refrigeranteReducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  pesquisa: _pages_refrigerantes_pesquisaReducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 }));
 
 /***/ }),
@@ -75987,6 +75991,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/layout/Grid */ "./resources/js/components/layout/Grid.jsx");
 /* harmony import */ var _components_layout_Row__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/layout/Row */ "./resources/js/components/layout/Row.jsx");
 /* harmony import */ var _components_button_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/button/Button */ "./resources/js/components/button/Button.jsx");
+/* harmony import */ var _pesquisaActions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pesquisaActions */ "./resources/js/pages/refrigerantes/pesquisaActions.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -76014,14 +76019,28 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    litragens: state.refrigerante.litragens
+    litragens: state.refrigerante.litragens,
+    marca: state.pesquisa.marca,
+    litragem: state.pesquisa.litragem,
+    valor_min: state.pesquisa.valor_min,
+    valor_max: state.pesquisa.valor_max,
+    quantidade_min: state.pesquisa.quantidade_min,
+    quantidade_max: state.pesquisa.quantidade_max
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({}, dispatch);
+  return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({
+    filtrarMarca: _pesquisaActions__WEBPACK_IMPORTED_MODULE_8__["filtrarMarca"],
+    filtrarLitragem: _pesquisaActions__WEBPACK_IMPORTED_MODULE_8__["filtrarLitragem"],
+    filtrarValorMin: _pesquisaActions__WEBPACK_IMPORTED_MODULE_8__["filtrarValorMin"],
+    filtrarvalorMax: _pesquisaActions__WEBPACK_IMPORTED_MODULE_8__["filtrarvalorMax"],
+    filtrarQuantidadeMin: _pesquisaActions__WEBPACK_IMPORTED_MODULE_8__["filtrarQuantidadeMin"],
+    filtrarQuantidadeMax: _pesquisaActions__WEBPACK_IMPORTED_MODULE_8__["filtrarQuantidadeMax"]
+  }, dispatch);
 };
 
 var FormPesquisa =
@@ -76036,11 +76055,10 @@ function (_React$Component) {
   }
 
   _createClass(FormPesquisa, [{
-    key: "handleChangeLitragem",
-    value: function handleChangeLitragem() {}
-  }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Row__WEBPACK_IMPORTED_MODULE_6__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
         lg: "3",
         md: "4",
@@ -76052,11 +76070,15 @@ function (_React$Component) {
         to: "filtro_marca",
         title: "Marca:"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: this.props.marca,
+        onChange: function onChange(event) {
+          return _this.props.filtrarMarca(event.target.value);
+        },
         className: "form-control form-control-sm",
         type: "text",
         id: "filtro_marca"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        lg: "3",
+        lg: "2",
         md: "4",
         sm: "6",
         xs: "12"
@@ -76067,8 +76089,10 @@ function (_React$Component) {
         title: "Litragem:"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form_Select__WEBPACK_IMPORTED_MODULE_3__["default"], {
         data: this.props.litragens,
-        value: this.props.litragem_id,
-        onChange: this.handleChangeLitragem.bind(this),
+        value: this.props.litragem,
+        onChange: function onChange(event) {
+          return _this.props.filtrarLitragem(event.target.value);
+        },
         className: "custom-select custom-select-sm",
         id: "litragem",
         index: "id",
@@ -76086,14 +76110,22 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: this.props.valor_min,
+        onChange: function onChange(event) {
+          return _this.props.filtrarValorMin(event.target.value);
+        },
         className: "form-control form-control-sm",
         placeholder: "min"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: this.props.valor_max,
+        onChange: function onChange(event) {
+          return _this.props.filtrarvalorMax(event.target.value);
+        },
         className: "form-control form-control-sm",
         placeholder: "max"
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
         lg: "3",
-        md: "4",
+        md: "6",
         sm: "6",
         xs: "12"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -76104,19 +76136,37 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "input-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: this.props.quantidade_min,
+        onChange: function onChange(event) {
+          return _this.props.filtrarQuantidadeMin(event.target.value);
+        },
         className: "form-control form-control-sm",
         placeholder: "min"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: this.props.quantidade_max,
+        onChange: function onChange(event) {
+          return _this.props.filtrarQuantidadeMax(event.target.value);
+        },
         className: "form-control form-control-sm",
         placeholder: "max"
-      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Row__WEBPACK_IMPORTED_MODULE_6__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        lg: "12"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Grid__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        lg: "1",
+        md: "6",
+        sm: "12",
+        sx: "12"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          marginTop: 30,
+          paddingBottom: 30
+        },
+        className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_button_Button__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        type: "secondary",
+        type: "primary",
         icon: "fa fa-fw fa-search",
-        title: "Pesquisar",
-        "float": "right"
-      }))));
+        "float": "right",
+        size: "block",
+        size2: "sm"
+      })))));
     }
   }]);
 
@@ -76459,6 +76509,123 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./resources/js/pages/refrigerantes/pesquisaActions.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/pages/refrigerantes/pesquisaActions.js ***!
+  \*************************************************************/
+/*! exports provided: filtrarMarca, filtrarLitragem, filtrarValorMin, filtrarvalorMax, filtrarQuantidadeMin, filtrarQuantidadeMax */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filtrarMarca", function() { return filtrarMarca; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filtrarLitragem", function() { return filtrarLitragem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filtrarValorMin", function() { return filtrarValorMin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filtrarvalorMax", function() { return filtrarvalorMax; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filtrarQuantidadeMin", function() { return filtrarQuantidadeMin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filtrarQuantidadeMax", function() { return filtrarQuantidadeMax; });
+var filtrarMarca = function filtrarMarca(value) {
+  return {
+    type: "FILTRAR_MARCA",
+    paylaod: value
+  };
+};
+var filtrarLitragem = function filtrarLitragem(value) {
+  return {
+    type: "FILTRAR_LITRAGEM",
+    paylaod: value
+  };
+};
+var filtrarValorMin = function filtrarValorMin(value) {
+  return {
+    type: "FILTRAR_VALOR_MIN",
+    paylaod: value
+  };
+};
+var filtrarvalorMax = function filtrarvalorMax(value) {
+  return {
+    type: "FILTRAR_VALOR_MAX",
+    paylaod: value
+  };
+};
+var filtrarQuantidadeMin = function filtrarQuantidadeMin(value) {
+  return {
+    type: "FILTRAR_QUANTIDADE_MIN",
+    paylaod: value
+  };
+};
+var filtrarQuantidadeMax = function filtrarQuantidadeMax(value) {
+  return {
+    type: "FILTRAR_QUANTIDADE_MAX",
+    paylaod: value
+  };
+};
+
+/***/ }),
+
+/***/ "./resources/js/pages/refrigerantes/pesquisaReducer.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/pages/refrigerantes/pesquisaReducer.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var INITIAL_VALUE = {
+  marca: "",
+  litragem: "",
+  valor_min: "",
+  valor_max: "",
+  quantidade_min: "",
+  quantidade_max: ""
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : INITIAL_VALUE;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case "FILTRAR_MARCA":
+      return _objectSpread({}, state, {
+        marca: action.paylaod
+      });
+
+    case "FILTRAR_LITRAGEM":
+      return _objectSpread({}, state, {
+        litragem: action.paylaod
+      });
+
+    case "FILTRAR_VALOR_MIN":
+      return _objectSpread({}, state, {
+        valor_min: action.paylaod
+      });
+
+    case "FILTRAR_VALOR_MAX":
+      return _objectSpread({}, state, {
+        valor_max: action.paylaod
+      });
+
+    case "FILTRAR_QUANTIDADE_MIN":
+      return _objectSpread({}, state, {
+        quantidade_min: action.paylaod
+      });
+
+    case "FILTRAR_QUANTIDADE_MAX":
+      return _objectSpread({}, state, {
+        quantidade_max: action.paylaod
+      });
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/pages/refrigerantes/refrigeranteActions.js":
 /*!*****************************************************************!*\
   !*** ./resources/js/pages/refrigerantes/refrigeranteActions.js ***!
@@ -76681,7 +76848,6 @@ var DEFAULT_DATA = {
 };
 var INITIAL_VALUE = {
   list: [],
-  filters: {},
   litragens: [],
   sabores: [],
   tipos: [],

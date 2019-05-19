@@ -9,7 +9,6 @@ const DEFAULT_DATA = {
 
 const INITIAL_VALUE = {
   list: [],
-  filters: {},
   litragens: [],
   sabores: [],
   tipos: [],
