@@ -15,7 +15,7 @@ import Tbody from '../../components/table/Tbody'
 import Label from '../../components/form/Label'
 import ModalCadastro from "./ModalCadastro"
 import ModalExcluir from '../../components/modal/ModalConfirmaExclusao'
-import {listar, excluir} from './refrigeranteActions'
+import {listar, excluir, clearData, setRefrigerante} from './refrigeranteActions'
 
 const mapStateToProps = state => ({
   list: state.refrigerante.list
@@ -23,6 +23,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
   listar,
   excluir,
+  clearData,
+  setRefrigerante,
 }, dispatch)
 
 class Refrigerantes extends React.Component {
@@ -40,8 +42,29 @@ class Refrigerantes extends React.Component {
     this.props.listar()
   }
 
+  handleAdicionar(){
+    this.props.clearData()
+    $('#marca').removeClass('is-valid')
+    $('#marca').removeClass('is-invalid')
+
+    $('#sabor').removeClass('is-valid')
+    $('#sabor').removeClass('is-invalid')
+
+    $('#litragem').removeClass('is-valid')
+    $('#litragem').removeClass('is-invalid')
+
+    $('#tipo').removeClass('is-valid')
+    $('#tipo').removeClass('is-invalid')
+
+    $('#quantidade').removeClass('is-valid')
+    $('#quantidade').removeClass('is-invalid')
+
+    $('#valor').removeClass('is-valid')
+    $('#valor').removeClass('is-invalid')
+  }
+
   handleEditar(item){
-    this.props.setItem(item)
+    this.props.setRefrigerante(item)
   }
 
   handleExcluir(id){
@@ -79,6 +102,9 @@ class Refrigerantes extends React.Component {
             icon="fas fa-pen"
             type="outline-secondary"
             size="sm"
+            toggle="modal"
+            target="#md_cadastro_refrigerantes"
+            onClick={() => this.handleEditar(item)}
           />
           <Button
             onClick={() => this.handleExcluir(item.id)}
@@ -108,6 +134,7 @@ class Refrigerantes extends React.Component {
                   icon="fa fa-fw fa-plus"
                   toggle="modal"
                   target="#md_cadastro_refrigerantes"
+                  onClick={this.handleAdicionar.bind(this)}
                 />
               </CardHeader>
               <CardBody>

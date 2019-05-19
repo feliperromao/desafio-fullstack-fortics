@@ -75904,7 +75904,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         value: this.props.marca,
         onChange: this.handleChangeMarca.bind(this),
-        placeholder: "Ex: Cola Cola",
+        placeholder: "Ex: Coca Cola",
         id: "marca",
         className: "form-control",
         type: "text"
@@ -75968,7 +75968,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         value: this.props.quantidade,
         onChange: this.handleChangeQuantidade.bind(this),
-        valor: "quantidade",
+        id: "quantidade",
         min: 0,
         className: "form-control",
         type: "number"
@@ -76170,7 +76170,9 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return Object(redux__WEBPACK_IMPORTED_MODULE_2__["bindActionCreators"])({
     listar: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_17__["listar"],
-    excluir: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_17__["excluir"]
+    excluir: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_17__["excluir"],
+    clearData: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_17__["clearData"],
+    setRefrigerante: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_17__["setRefrigerante"]
   }, dispatch);
 };
 
@@ -76198,9 +76200,26 @@ function (_React$Component) {
       this.props.listar();
     }
   }, {
+    key: "handleAdicionar",
+    value: function handleAdicionar() {
+      this.props.clearData();
+      $('#marca').removeClass('is-valid');
+      $('#marca').removeClass('is-invalid');
+      $('#sabor').removeClass('is-valid');
+      $('#sabor').removeClass('is-invalid');
+      $('#litragem').removeClass('is-valid');
+      $('#litragem').removeClass('is-invalid');
+      $('#tipo').removeClass('is-valid');
+      $('#tipo').removeClass('is-invalid');
+      $('#quantidade').removeClass('is-valid');
+      $('#quantidade').removeClass('is-invalid');
+      $('#valor').removeClass('is-valid');
+      $('#valor').removeClass('is-invalid');
+    }
+  }, {
     key: "handleEditar",
     value: function handleEditar(item) {
-      this.props.setItem(item);
+      this.props.setRefrigerante(item);
     }
   }, {
     key: "handleExcluir",
@@ -76246,7 +76265,12 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_button_Button__WEBPACK_IMPORTED_MODULE_10__["default"], {
           icon: "fas fa-pen",
           type: "outline-secondary",
-          size: "sm"
+          size: "sm",
+          toggle: "modal",
+          target: "#md_cadastro_refrigerantes",
+          onClick: function onClick() {
+            return _this2.handleEditar(item);
+          }
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_button_Button__WEBPACK_IMPORTED_MODULE_10__["default"], {
           onClick: function onClick() {
             return _this2.handleExcluir(item.id);
@@ -76274,7 +76298,8 @@ function (_React$Component) {
         "float": "right",
         icon: "fa fa-fw fa-plus",
         toggle: "modal",
-        target: "#md_cadastro_refrigerantes"
+        target: "#md_cadastro_refrigerantes",
+        onClick: this.handleAdicionar.bind(this)
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_card_CardBody__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Table__WEBPACK_IMPORTED_MODULE_11__["default"], {
         style: "table-responsive-lg"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Thead__WEBPACK_IMPORTED_MODULE_12__["default"], {
@@ -76301,7 +76326,7 @@ function (_React$Component) {
 /*!*****************************************************************!*\
   !*** ./resources/js/pages/refrigerantes/refrigeranteActions.js ***!
   \*****************************************************************/
-/*! exports provided: listar, salvar, excluir, listarLitragens, listarSabores, listarTipos, setValor, setQuantidade, setMarca, setTipo, setSabor, setLitragem */
+/*! exports provided: listar, salvar, excluir, listarLitragens, listarSabores, listarTipos, setValor, setQuantidade, setMarca, setTipo, setSabor, setLitragem, setRefrigerante, clearData */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76318,6 +76343,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setTipo", function() { return setTipo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setSabor", function() { return setSabor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setLitragem", function() { return setLitragem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setRefrigerante", function() { return setRefrigerante; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearData", function() { return clearData; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _main_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../main/config */ "./resources/js/main/config.js");
@@ -76327,7 +76354,7 @@ __webpack_require__.r(__webpack_exports__);
 
 react_toastify__WEBPACK_IMPORTED_MODULE_2__["toast"].configure();
 var listar = function listar() {
-  return function (dispatch, getState) {
+  return function (dispatch) {
     showLoading();
     var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_1__["base_url"])('api/refrigerantes');
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (resp) {
@@ -76464,6 +76491,17 @@ var setLitragem = function setLitragem(value) {
     payload: value
   };
 };
+var setRefrigerante = function setRefrigerante(data) {
+  return {
+    type: 'SET_ REFRIGERANTE',
+    payload: data
+  };
+};
+var clearData = function clearData() {
+  return {
+    type: 'CLEAR_FORMDATA'
+  };
+};
 
 /***/ }),
 
@@ -76480,20 +76518,21 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var DEFAULT_DATA = {
+  valor: "",
+  quantidade: "",
+  marca: "",
+  tipo_id: "",
+  sabor_id: "",
+  litragem_id: ""
+};
 var INITIAL_VALUE = {
   list: [],
   filters: {},
   litragens: [],
   sabores: [],
   tipos: [],
-  data: {
-    valor: "",
-    quantidade: "",
-    marca: "",
-    tipo_id: "",
-    sabor_id: "",
-    litragem_id: ""
-  }
+  data: DEFAULT_DATA
 };
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : INITIAL_VALUE;
@@ -76540,6 +76579,16 @@ var INITIAL_VALUE = {
         data: _objectSpread({}, state.data, {
           litragem_id: action.payload
         })
+      });
+
+    case 'SET_ REFRIGERANTE':
+      return _objectSpread({}, state, {
+        data: action.payload
+      });
+
+    case 'CLEAR_FORMDATA':
+      return _objectSpread({}, state, {
+        data: DEFAULT_DATA
       });
 
     case 'LISTAR_REFRIGERANTES':

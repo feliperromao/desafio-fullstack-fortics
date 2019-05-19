@@ -1,18 +1,19 @@
+const DEFAULT_DATA = {
+  valor: "",
+  quantidade: "",
+  marca: "",
+  tipo_id: "",
+  sabor_id: "",
+  litragem_id: "",
+}
+
 const INITIAL_VALUE = {
   list: [],
   filters: {},
   litragens: [],
   sabores: [],
   tipos: [],
-  data: {
-    valor: "",
-    quantidade: "",
-    marca: "",
-    tipo_id: "",
-    sabor_id: "",
-    litragem_id: "",
-  },
-
+  data: DEFAULT_DATA,
 }
 
 export default (state = INITIAL_VALUE, action) => {
@@ -69,6 +70,18 @@ export default (state = INITIAL_VALUE, action) => {
           ...state.data,
           litragem_id: action.payload
         }
+      }
+
+    case 'SET_ REFRIGERANTE':
+      return {
+        ...state,
+        data: action.payload
+      }
+
+    case 'CLEAR_FORMDATA':
+      return {
+        ...state,
+        data: DEFAULT_DATA
       }
 
     case 'LISTAR_REFRIGERANTES':

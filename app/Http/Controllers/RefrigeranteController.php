@@ -33,8 +33,6 @@ class RefrigeranteController extends Controller
         $tipo_id =      $request->input('tipo_id');
         $sabor_id =     $request->input('sabor_id');
         $litragem_id =  $request->input('litragem_id');
-        $created_at =   date('Y-m-d H:i:s');
-        $updated_at =   date('Y-m-d H:i:s');
 
         if( !$valor OR !$quantidade OR !$marca OR !$tipo_id OR !$sabor_id OR !$litragem_id ){
             $response = array('message' => 'Por favor informe os camos obrigatórios');
@@ -80,7 +78,43 @@ class RefrigeranteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $valor =        $request->input('valor');
+        $quantidade =   $request->input('quantidade');
+        $marca =        $request->input('marca');
+        $tipo_id =      $request->input('tipo_id');
+        $sabor_id =     $request->input('sabor_id');
+        $litragem_id =  $request->input('litragem_id');
+
+        if( !$valor OR !$quantidade OR !$marca OR !$tipo_id OR !$sabor_id OR !$litragem_id ){
+            $response = array('message' => 'Por favor informe os camos obrigatórios.');
+            return response($response, 400);
+        }
+
+        $refrigerante = Refrigerante::where('id', $id)->first();
+
+        if(!$refrigerante){
+            $response = array('Refrigerante náo encontrado');
+            return response($response, 404);
+        }
+
+        $refrigerante->valor = $valor;
+        $refrigerante->quantidade = $quantidade;
+        $refrigerante->marca = $marca;
+        $refrigerante->tipo_id = $tipo_id;
+        $refrigerante->sabor_id = $sabor_id;
+        $refrigerante->litragem_id = $litragem_id;
+
+        if( $refrigerante->save() ){
+            return response($refrigerante);
+        }else{
+            $message = 'Náo foi possivel atualizar o refrigerante,
+                        verifique se ja existe um refrigerante com a mesma marca e litragem';
+            $response = array('message' => $message);
+            return response($response, 500);
+        }
+
+
     }
 
     /**

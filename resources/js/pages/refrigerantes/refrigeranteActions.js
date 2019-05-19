@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 toast.configure()
 
 export const listar = () => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     showLoading()
     const url = base_url('api/refrigerantes')
     axios.get(url)
@@ -144,4 +144,13 @@ export const setSabor = value => ({
 export const setLitragem = value => ({
   type: 'SET_LITRAGEM',
   payload: value
+})
+
+export const setRefrigerante = data => ({
+  type: 'SET_ REFRIGERANTE',
+  payload: data
+})
+
+export const clearData = () => ({
+  type: 'CLEAR_FORMDATA'
 })

@@ -153,7 +153,7 @@ class FormCadastro extends React.Component {
               <input
                 value={this.props.marca}
                 onChange={this.handleChangeMarca.bind(this)}
-                placeholder="Ex: Cola Cola"
+                placeholder="Ex: Coca Cola"
                 id="marca"
                 className="form-control"
                 type="text"/>
@@ -208,7 +208,7 @@ class FormCadastro extends React.Component {
               <input
                 value={this.props.quantidade}
                 onChange={this.handleChangeQuantidade.bind(this)}
-                valor="quantidade"
+                id="quantidade"
                 min={0}
                 className="form-control"
                 type="number"/>
