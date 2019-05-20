@@ -20,12 +20,6 @@ class Routes extends React.Component {
             <Divider />
             <NavItem
               path="/"
-              icon="fas fa-fw fa-tachometer-alt"
-              title="Dashboard"
-            />
-            <Divider />
-            <NavItem
-              path="/refrigerantes"
               icon="fas fa-fw fa-box-open"
               title="Refrigerantes"
             />
@@ -39,8 +33,7 @@ class Routes extends React.Component {
 
           </Sidebar>
           <div id="content-wrapper" className="d-flex flex-column">
-            <Route exact path="/" component={Dashboard} />
-            <Route path="/refrigerantes" component={Refrigerantes} />
+            <Route exact path="/" component={Refrigerantes} />
             <Route path="/sobre" component={Sobre} />
           </div>
         </React.Fragment>

@@ -1,7 +1,11 @@
 export const showLoading = () => {
-    document.querySelector('.loading').classList.remove('hidden')
+    $(function(){
+        $("#loading").removeClass("hidden")
+    })
 }
 
 export const hideLoading = () => {
-    document.querySelector('.loading').classList.add('hidden')
+    $(function(){
+        $("#loading").addClass("hidden")
+    })
 }

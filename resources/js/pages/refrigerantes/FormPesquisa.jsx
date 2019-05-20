@@ -38,6 +38,12 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 
 class FormPesquisa extends React.Component {
 
+  handleEnter(event){
+    if(event.key == 'Enter'){
+      this.props.pesquisar()
+    }
+  }
+
   render() {
     return (
       <form>
@@ -47,6 +53,7 @@ class FormPesquisa extends React.Component {
               <Label to="filtro_marca" title="Marca:" />
               <input
                 value={this.props.marca}
+                onKeyUp={this.handleEnter.bind(this)}
                 onChange={event => this.props.filtrarMarca(event.target.value)}
                 className="form-control form-control-sm"
                 type="text"
@@ -73,12 +80,14 @@ class FormPesquisa extends React.Component {
               <div className="input-group">
                 <input
                   value={this.props.valor_min}
+                  onKeyUp={this.handleEnter.bind(this)}
                   onChange={event => this.props.filtrarValorMin(event.target.value)}
                   className="form-control form-control-sm"
                   placeholder="min"
                 />
                 <input
                   value={this.props.valor_max}
+                  onKeyUp={this.handleEnter.bind(this)}
                   onChange={event => this.props.filtrarvalorMax(event.target.value)}
                   className="form-control form-control-sm"
                   placeholder="max"
@@ -92,12 +101,14 @@ class FormPesquisa extends React.Component {
               <div className="input-group">
                 <input
                   value={this.props.quantidade_min}
+                  onKeyUp={this.handleEnter.bind(this)}
                   onChange={event => this.props.filtrarQuantidadeMin(event.target.value)}
                   className="form-control form-control-sm"
                   placeholder="min"
                 />
                 <input
                   value={this.props.quantidade_max}
+                  onKeyUp={this.handleEnter.bind(this)}
                   onChange={event => this.props.filtrarQuantidadeMax(event.target.value)}
                   className="form-control form-control-sm"
                   placeholder="max"

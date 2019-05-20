@@ -74453,6 +74453,30 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/commons/loading.js":
+/*!*****************************************!*\
+  !*** ./resources/js/commons/loading.js ***!
+  \*****************************************/
+/*! exports provided: showLoading, hideLoading */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showLoading", function() { return showLoading; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hideLoading", function() { return hideLoading; });
+var showLoading = function showLoading() {
+  $(function () {
+    $("#loading").removeClass("hidden");
+  });
+};
+var hideLoading = function hideLoading() {
+  $(function () {
+    $("#loading").addClass("hidden");
+  });
+};
+
+/***/ }),
+
 /***/ "./resources/js/commons/validate.js":
 /*!******************************************!*\
   !*** ./resources/js/commons/validate.js ***!
@@ -74679,6 +74703,7 @@ __webpack_require__.r(__webpack_exports__);
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "copyright text-center my-auto"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Copyright \xA9 Felipe Rom\xE3o 2019"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "loading",
     className: "loading hidden"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "spinner-border text-primary",
@@ -75701,10 +75726,6 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_nav_Sidebar__WEBPACK_IMPORTED_MODULE_2__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_nav_Brand__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_nav_Divider__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_nav_NavItem__WEBPACK_IMPORTED_MODULE_5__["default"], {
         path: "/",
-        icon: "fas fa-fw fa-tachometer-alt",
-        title: "Dashboard"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_nav_Divider__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_nav_NavItem__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        path: "/refrigerantes",
         icon: "fas fa-fw fa-box-open",
         title: "Refrigerantes"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_nav_Divider__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_nav_NavItem__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -75717,9 +75738,6 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
         path: "/",
-        component: _pages_dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_6__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        path: "/refrigerantes",
         component: _pages_refrigerantes_Refrigerantes__WEBPACK_IMPORTED_MODULE_7__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/sobre",
@@ -76168,6 +76186,13 @@ function (_React$Component) {
   }
 
   _createClass(FormPesquisa, [{
+    key: "handleEnter",
+    value: function handleEnter(event) {
+      if (event.key == 'Enter') {
+        this.props.pesquisar();
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this = this;
@@ -76184,6 +76209,7 @@ function (_React$Component) {
         title: "Marca:"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         value: this.props.marca,
+        onKeyUp: this.handleEnter.bind(this),
         onChange: function onChange(event) {
           return _this.props.filtrarMarca(event.target.value);
         },
@@ -76224,6 +76250,7 @@ function (_React$Component) {
         className: "input-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         value: this.props.valor_min,
+        onKeyUp: this.handleEnter.bind(this),
         onChange: function onChange(event) {
           return _this.props.filtrarValorMin(event.target.value);
         },
@@ -76231,6 +76258,7 @@ function (_React$Component) {
         placeholder: "min"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         value: this.props.valor_max,
+        onKeyUp: this.handleEnter.bind(this),
         onChange: function onChange(event) {
           return _this.props.filtrarvalorMax(event.target.value);
         },
@@ -76250,6 +76278,7 @@ function (_React$Component) {
         className: "input-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         value: this.props.quantidade_min,
+        onKeyUp: this.handleEnter.bind(this),
         onChange: function onChange(event) {
           return _this.props.filtrarQuantidadeMin(event.target.value);
         },
@@ -76257,6 +76286,7 @@ function (_React$Component) {
         placeholder: "min"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         value: this.props.quantidade_max,
+        onKeyUp: this.handleEnter.bind(this),
         onChange: function onChange(event) {
           return _this.props.filtrarQuantidadeMax(event.target.value);
         },
@@ -76772,19 +76802,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearData", function() { return clearData; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _commons_validate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../commons/validate */ "./resources/js/commons/validate.js");
-/* harmony import */ var _main_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../main/config */ "./resources/js/main/config.js");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/esm/react-toastify.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/esm/react-toastify.js");
+/* harmony import */ var _commons_validate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../commons/validate */ "./resources/js/commons/validate.js");
+/* harmony import */ var _commons_loading__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../commons/loading */ "./resources/js/commons/loading.js");
+/* harmony import */ var _main_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../main/config */ "./resources/js/main/config.js");
 
 
 
 
-react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].configure();
+
+react_toastify__WEBPACK_IMPORTED_MODULE_1__["toast"].configure();
 var listar = function listar() {
   var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
   return function (dispatch, getState) {
-    showLoading();
-    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])("api/refrigerantes?page=".concat(page));
+    Object(_commons_loading__WEBPACK_IMPORTED_MODULE_3__["showLoading"])();
+    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_4__["base_url"])("api/refrigerantes?page=".concat(page));
     var _getState$pesquisa = getState().pesquisa,
         marca = _getState$pesquisa.marca,
         litragem = _getState$pesquisa.litragem,
@@ -76814,20 +76846,20 @@ var listar = function listar() {
         type: 'LISTAR_REFRIGERANTES',
         payload: resp.data ? resp.data.data : []
       });
-    }).then(hideLoading())["catch"](function (err) {
-      hideLoading();
-      react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].error('Náo foi possivel conectar com o servidor...');
+    }).then(Object(_commons_loading__WEBPACK_IMPORTED_MODULE_3__["hideLoading"])())["catch"](function (err) {
+      Object(_commons_loading__WEBPACK_IMPORTED_MODULE_3__["hideLoading"])();
+      react_toastify__WEBPACK_IMPORTED_MODULE_1__["toast"].error('Náo foi possivel conectar com o servidor...');
     });
   };
 };
 var salvar = function salvar() {
   return function (dispatch, getState) {
-    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_1__["validate"])(document.getElementById("marca"));
-    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_1__["validate"])(document.getElementById("sabor"));
-    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_1__["validate"])(document.getElementById("litragem"));
-    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_1__["validate"])(document.getElementById("tipo"));
-    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_1__["validate"])(document.getElementById("quantidade"));
-    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_1__["validate"])(document.getElementById("valor"));
+    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_2__["validate"])(document.getElementById("marca"));
+    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_2__["validate"])(document.getElementById("sabor"));
+    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_2__["validate"])(document.getElementById("litragem"));
+    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_2__["validate"])(document.getElementById("tipo"));
+    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_2__["validate"])(document.getElementById("quantidade"));
+    Object(_commons_validate__WEBPACK_IMPORTED_MODULE_2__["validate"])(document.getElementById("valor"));
     var _getState$refrigerant = getState().refrigerante.data,
         id = _getState$refrigerant.id,
         valor = _getState$refrigerant.valor,
@@ -76838,7 +76870,7 @@ var salvar = function salvar() {
         litragem_id = _getState$refrigerant.litragem_id;
 
     if (valor && quantidade && marca && tipo_id && sabor_id && litragem_id) {
-      showLoading();
+      Object(_commons_loading__WEBPACK_IMPORTED_MODULE_3__["showLoading"])();
       var config = {
         headers: {
           'content-type': 'application/x-www-form-urlencoded'
@@ -76855,42 +76887,42 @@ var salvar = function salvar() {
 
       if (id) {
         formData.append('_method', 'PUT');
-        url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])("api/refrigerantes/".concat(id));
+        url = Object(_main_config__WEBPACK_IMPORTED_MODULE_4__["base_url"])("api/refrigerantes/".concat(id));
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, formData, config).then(dispatch(listar())).then(function (_) {
-          hideLoading();
-          react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].success('Atualizado com sucesso!');
+          Object(_commons_loading__WEBPACK_IMPORTED_MODULE_3__["hideLoading"])();
+          react_toastify__WEBPACK_IMPORTED_MODULE_1__["toast"].success('Atualizado com sucesso!');
         })["catch"](function (_) {
-          hideLoading();
-          react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].error('Náo foi possivel salvar...');
+          Object(_commons_loading__WEBPACK_IMPORTED_MODULE_3__["hideLoading"])();
+          react_toastify__WEBPACK_IMPORTED_MODULE_1__["toast"].error('Náo foi possivel salvar...');
         });
       } else {
-        url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])('api/refrigerantes');
+        url = Object(_main_config__WEBPACK_IMPORTED_MODULE_4__["base_url"])('api/refrigerantes');
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(url, formData, config).then(dispatch(listar())).then(function (_) {
-          hideLoading();
-          react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].success('Adicionado com sucesso!');
+          Object(_commons_loading__WEBPACK_IMPORTED_MODULE_3__["hideLoading"])();
+          react_toastify__WEBPACK_IMPORTED_MODULE_1__["toast"].success('Adicionado com sucesso!');
         })["catch"](function (_) {
-          hideLoading();
-          react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].error('Náo foi possivel salvar...');
+          Object(_commons_loading__WEBPACK_IMPORTED_MODULE_3__["hideLoading"])();
+          react_toastify__WEBPACK_IMPORTED_MODULE_1__["toast"].error('Náo foi possivel salvar...');
         });
       }
     } else {
-      react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].error('Por favor preencha os campos obrigatórios.');
+      react_toastify__WEBPACK_IMPORTED_MODULE_1__["toast"].error('Por favor preencha os campos obrigatórios.');
     }
   };
 };
 var excluir = function excluir(id) {
   return function (dispatch) {
-    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])("api/refrigerantes/".concat(id));
+    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_4__["base_url"])("api/refrigerantes/".concat(id));
     axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"](url).then(dispatch(listar())).then(function (_) {
-      react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].warn('Excluido com sucesso!');
+      react_toastify__WEBPACK_IMPORTED_MODULE_1__["toast"].warn('Excluido com sucesso!');
     })["catch"](function (_) {
-      return react_toastify__WEBPACK_IMPORTED_MODULE_3__["toast"].error('Náo foi possivel excluir...');
+      return react_toastify__WEBPACK_IMPORTED_MODULE_1__["toast"].error('Náo foi possivel excluir...');
     });
   };
 };
 var listarLitragens = function listarLitragens() {
   return function (dispatch) {
-    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])('api/litragens');
+    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_4__["base_url"])('api/litragens');
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (resp) {
       return dispatch({
         type: 'LISTAR_LITRAGENS',
@@ -76901,7 +76933,7 @@ var listarLitragens = function listarLitragens() {
 };
 var listarSabores = function listarSabores() {
   return function (dispatch) {
-    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])('api/sabores');
+    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_4__["base_url"])('api/sabores');
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (resp) {
       return dispatch({
         type: 'LISTAR_SABORES',
@@ -76912,7 +76944,7 @@ var listarSabores = function listarSabores() {
 };
 var listarTipos = function listarTipos() {
   return function (dispatch) {
-    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_2__["base_url"])('api/tipos');
+    var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_4__["base_url"])('api/tipos');
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(url).then(function (resp) {
       return dispatch({
         type: 'LISTAR_TIPOS',
