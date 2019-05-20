@@ -76487,6 +76487,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var mapStateToProps = function mapStateToProps(state) {
   return {
     list: state.refrigerante.list,
@@ -76503,7 +76504,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     listarTipos: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_20__["listarTipos"],
     excluir: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_20__["excluir"],
     clearData: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_20__["clearData"],
-    setRefrigerante: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_20__["setRefrigerante"]
+    setRefrigerante: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_20__["setRefrigerante"],
+    excluirMultiplos: _refrigeranteActions__WEBPACK_IMPORTED_MODULE_20__["excluirMultiplos"]
   }, dispatch);
 };
 
@@ -76519,8 +76521,8 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Refrigerantes).call(this, props));
     _this.state = {
-      id_excluir: "",
-      thead: ['Selecionar', 'Marca', 'Sabor', 'Litragem', 'Tipo', 'Quantidade', 'Preço', 'Editar/Excluir']
+      lista_excluir: [],
+      id_excluir: ""
     };
     return _this;
   }
@@ -76568,6 +76570,29 @@ function (_React$Component) {
       this.props.excluir(this.state.id_excluir);
     }
   }, {
+    key: "handleConfirmaExcluirMassa",
+    value: function handleConfirmaExcluirMassa() {
+      this.props.excluirMultiplos(this.state.lista_excluir);
+      var state = this.state;
+      state.lista_excluir = [];
+      this.setState(state);
+    }
+  }, {
+    key: "handleCheckExcluir",
+    value: function handleCheckExcluir(event, id) {
+      var state = this.state;
+
+      if (event.target.checked) {
+        state.lista_excluir.push(id);
+      } else {
+        var index = state.lista_excluir.indexOf(id);
+        state.lista_excluir.splice(index, 1);
+      }
+
+      console.log(state.lista_excluir);
+      this.setState(state);
+    }
+  }, {
     key: "renderItens",
     value: function renderItens() {
       var _this2 = this;
@@ -76581,6 +76606,9 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "custom-control custom-checkbox"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          onClick: function onClick(event) {
+            return _this2.handleCheckExcluir(event, item.id);
+          },
           type: "checkbox",
           className: "custom-control-input",
           id: "select_".concat(item.id)
@@ -76635,12 +76663,18 @@ function (_React$Component) {
         target: "#md_cadastro_refrigerantes",
         onClick: this.handleAdicionar.bind(this)
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_card_CardBody__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormPesquisa__WEBPACK_IMPORTED_MODULE_18__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Table__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        id: "table_refrigerantes",
         style: "table-responsive-lg"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Thead__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        itens: this.state.thead,
         color: "thead-light",
         align: "center"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Tbody__WEBPACK_IMPORTED_MODULE_13__["default"], null, this.renderItens())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_pagination_Pagination__WEBPACK_IMPORTED_MODULE_15__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, this.state.lista_excluir.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_button_Button__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        type: "warning",
+        title: "Excluir Selecionados",
+        size: "sm",
+        toggle: "modal",
+        target: "#md_excluir_multiplos"
+      }) : 'Excluir'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Marca"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Sabor"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Litragem"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Tipo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quantidade"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Pre\xE7o"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Editar/Excluir"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_table_Tbody__WEBPACK_IMPORTED_MODULE_13__["default"], null, this.renderItens())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_pagination_Pagination__WEBPACK_IMPORTED_MODULE_15__["default"], {
         current_page: this.props.current_page,
         last_page: this.props.last_page,
         onClick: this.props.listar
@@ -76649,6 +76683,11 @@ function (_React$Component) {
         title: "Excluir Refrigerante",
         mensagem: "Tem certeza que deseja excluir?",
         confirmarExclusao: this.confirmaExcluir.bind(this)
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_modal_ModalConfirmaExclusao__WEBPACK_IMPORTED_MODULE_17__["default"], {
+        id: "md_excluir_multiplos",
+        title: "Excluir em massa",
+        mensagem: "Tem certeza que deseja excluir todos os itens selecionados?",
+        confirmarExclusao: this.handleConfirmaExcluirMassa.bind(this)
       }));
     }
   }]);
@@ -76781,7 +76820,7 @@ var INITIAL_VALUE = {
 /*!*****************************************************************!*\
   !*** ./resources/js/pages/refrigerantes/refrigeranteActions.js ***!
   \*****************************************************************/
-/*! exports provided: listar, salvar, excluir, listarLitragens, listarSabores, listarTipos, setValor, setQuantidade, setMarca, setTipo, setSabor, setLitragem, setRefrigerante, clearData */
+/*! exports provided: listar, salvar, excluir, excluirMultiplos, listarLitragens, listarSabores, listarTipos, setValor, setQuantidade, setMarca, setTipo, setSabor, setLitragem, setRefrigerante, clearData */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76789,6 +76828,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listar", function() { return listar; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "salvar", function() { return salvar; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "excluir", function() { return excluir; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "excluirMultiplos", function() { return excluirMultiplos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listarLitragens", function() { return listarLitragens; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listarSabores", function() { return listarSabores; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listarTipos", function() { return listarTipos; });
@@ -76918,6 +76958,16 @@ var excluir = function excluir(id) {
     })["catch"](function (_) {
       return react_toastify__WEBPACK_IMPORTED_MODULE_1__["toast"].error('Náo foi possivel excluir...');
     });
+  };
+};
+var excluirMultiplos = function excluirMultiplos(lista_excluir) {
+  return function (dispatch) {
+    var listagem = lista_excluir || [];
+    listagem.map(function (id) {
+      var url = Object(_main_config__WEBPACK_IMPORTED_MODULE_4__["base_url"])("api/refrigerantes/".concat(id));
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a["delete"](url);
+    });
+    dispatch(listar());
   };
 };
 var listarLitragens = function listarLitragens() {

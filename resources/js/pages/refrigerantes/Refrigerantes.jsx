@@ -16,6 +16,7 @@ import Label from '../../components/form/Label'
 import Pagination from "../../components/pagination/Pagination"
 import ModalCadastro from "./ModalCadastro"
 import ModalExcluir from '../../components/modal/ModalConfirmaExclusao'
+import ConfirmExcluirMultiplos from "../../components/modal/ModalConfirmaExclusao"
 import FormPesquisa from "./FormPesquisa"
 import {resetValidate} from "../../commons/validate"
 import {
@@ -26,6 +27,7 @@ import {
   listarLitragens,
   listarSabores,
   listarTipos,
+  excluirMultiplos,
 } from './refrigeranteActions'
 
 const mapStateToProps = state => ({
@@ -42,6 +44,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   excluir,
   clearData,
   setRefrigerante,
+  excluirMultiplos,
 }, dispatch)
 
 class Refrigerantes extends React.Component {
@@ -50,8 +53,8 @@ class Refrigerantes extends React.Component {
     super(props)
 
     this.state = {
+      lista_excluir: [],
       id_excluir: "",
-      thead: ['Selecionar', 'Marca', 'Sabor', 'Litragem', 'Tipo', 'Quantidade', 'Preço', 'Editar/Excluir']
     }
   }
 
@@ -71,7 +74,6 @@ class Refrigerantes extends React.Component {
     resetValidate(document.getElementById("tipo"))
     resetValidate(document.getElementById("quantidade"))
     resetValidate(document.getElementById("valor"))
-
   }
 
   handleEditar(item){
@@ -95,13 +97,41 @@ class Refrigerantes extends React.Component {
     this.props.excluir(this.state.id_excluir)
   }
 
+  handleConfirmaExcluirMassa(){
+    this.props.excluirMultiplos(this.state.lista_excluir)
+
+    const state = this.state
+    state.lista_excluir = []
+
+    this.setState(state)
+  }
+
+  handleCheckExcluir(event, id){
+    const state = this.state
+
+    if(event.target.checked){
+      state.lista_excluir.push(id)
+    }else{
+      const index = state.lista_excluir.indexOf(id)
+      state.lista_excluir.splice(index, 1)
+    }
+
+    console.log(state.lista_excluir)
+    
+    this.setState(state)
+  }
+
   renderItens(){
     const itens = this.props.list || []
     return itens.map( item => (
       <tr key={item.id}>
         <td className="text-center">
         <div className="custom-control custom-checkbox">
-          <input type="checkbox" className="custom-control-input" id={`select_${item.id}`} />
+          <input
+            onClick={event => this.handleCheckExcluir(event, item.id)}
+            type="checkbox"
+            className="custom-control-input"
+            id={`select_${item.id}`} />
           <label className="custom-control-label" htmlFor={`select_${item.id}`}></label>
         </div>
         </td>
@@ -157,8 +187,31 @@ class Refrigerantes extends React.Component {
               </CardHeader>
               <CardBody>
                 <FormPesquisa />
-                <Table style="table-responsive-lg">
-                  <Thead itens={this.state.thead} color="thead-light" align="center" />
+                <Table id="table_refrigerantes" style="table-responsive-lg">
+                  <Thead color="thead-light" align="center">
+                    <tr>
+                      <th>
+                        {
+                          (this.state.lista_excluir.length) ?
+                          <Button
+                            type="warning"
+                            title="Excluir Selecionados"
+                            size="sm"
+                            toggle="modal"
+                            target="#md_excluir_multiplos"
+                            /> :
+                          'Excluir'
+                        }
+                      </th>
+                      <th>Marca</th>
+                      <th>Sabor</th>
+                      <th>Litragem</th>
+                      <th>Tipo</th>
+                      <th>Quantidade</th>
+                      <th>Preço</th>
+                      <th>Editar/Excluir</th>
+                    </tr>
+                  </Thead>
                   <Tbody>{this.renderItens()}</Tbody>
                 </Table>
                 <Pagination
@@ -176,6 +229,12 @@ class Refrigerantes extends React.Component {
           title="Excluir Refrigerante"
           mensagem="Tem certeza que deseja excluir?"
           confirmarExclusao={this.confirmaExcluir.bind(this)}
+          />
+          <ConfirmExcluirMultiplos
+            id="md_excluir_multiplos"
+            title="Excluir em massa"
+            mensagem="Tem certeza que deseja excluir todos os itens selecionados?"
+            confirmarExclusao={this.handleConfirmaExcluirMassa.bind(this)}
           />
       </Page>
     )

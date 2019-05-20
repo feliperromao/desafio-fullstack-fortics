@@ -125,6 +125,18 @@ export const excluir = id => {
   }
 }
 
+export const excluirMultiplos = lista_excluir => {
+  return dispatch => {
+    const listagem = lista_excluir || []
+    listagem.map( id => {
+      const url = base_url(`api/refrigerantes/${id}`)
+      axios.delete(url)
+    })
+
+    dispatch(listar())
+  }
+}
+
 export const listarLitragens = () => {
   return dispatch => {
     const url = base_url('api/litragens')
