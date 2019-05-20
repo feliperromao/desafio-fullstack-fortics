@@ -56,7 +56,7 @@ Para executar localmente deve-se primeiro configurar o banco de dados
 Após configurar o banco de dados execute o seguinte comando para criar a estrutura das tabelas
 
 ```sh
-$ php artisan migrate:fresh
+$ php artisan migrate:fresh --seed
 ```
 
 Para subir o servidor com o laravel, deve-se executar o seguinte comando
