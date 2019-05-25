@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Refrigerante;
+use App\Models\Refrigerante;
 
 class RefrigeranteController extends Controller
 {
